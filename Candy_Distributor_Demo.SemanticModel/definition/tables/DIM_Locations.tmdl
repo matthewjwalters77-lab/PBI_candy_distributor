@@ -1,0 +1,176 @@
+table DIM_Locations
+	lineageTag: be6b8b6b-05bd-44b1-a9c8-16d7ab49e3cc
+
+	column lat
+		dataType: double
+		lineageTag: 8bb5213b-f279-4776-9b95-5c71d4496364
+		summarizeBy: none
+		sourceColumn: lat
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column lng
+		dataType: double
+		lineageTag: 83d42281-3630-455b-a82d-3fefbf20265c
+		summarizeBy: none
+		sourceColumn: lng
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column zcta
+		dataType: string
+		lineageTag: 72a1bdd6-f6ef-47d1-8b99-0bda856f61e3
+		summarizeBy: none
+		sourceColumn: zcta
+
+		annotation SummarizationSetBy = Automatic
+
+	column parent_zcta
+		dataType: string
+		lineageTag: 25a690a1-634f-4684-93a8-bb1a44ff40de
+		summarizeBy: none
+		sourceColumn: parent_zcta
+
+		annotation SummarizationSetBy = Automatic
+
+	column county_fips
+		dataType: string
+		lineageTag: 0f6c9413-ae79-4dab-9b4b-2ef35d0bf592
+		summarizeBy: none
+		sourceColumn: county_fips
+
+		annotation SummarizationSetBy = Automatic
+
+	column county_weights
+		dataType: string
+		lineageTag: e9cd1f07-8b56-43e0-9eda-6757f3564d19
+		summarizeBy: none
+		sourceColumn: county_weights
+
+		annotation SummarizationSetBy = Automatic
+
+	column county_names_all
+		dataType: string
+		lineageTag: 07cb59b9-0fdd-4df4-b33c-26f1b21b5356
+		summarizeBy: none
+		sourceColumn: county_names_all
+
+		annotation SummarizationSetBy = Automatic
+
+	column county_fips_all
+		dataType: string
+		lineageTag: 58a36858-6f4b-494f-a95d-e37605ba331e
+		summarizeBy: none
+		sourceColumn: county_fips_all
+
+		annotation SummarizationSetBy = Automatic
+
+	column imprecise
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: e3291d26-5c20-4f0a-a6ba-f4477f985e66
+		summarizeBy: none
+		sourceColumn: imprecise
+
+		annotation SummarizationSetBy = Automatic
+
+	column military
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: c413f3e3-8165-423c-a6c6-1f5dc79a42ea
+		summarizeBy: none
+		sourceColumn: military
+
+		annotation SummarizationSetBy = Automatic
+
+	column timezone
+		dataType: string
+		lineageTag: db218608-710b-467a-bde0-80ee974a1b9a
+		summarizeBy: none
+		sourceColumn: timezone
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Zip Code'
+		dataType: string
+		lineageTag: abf8206a-dd46-439b-b181-06849e5cd795
+		summarizeBy: none
+		sourceColumn: Zip Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column City
+		dataType: string
+		lineageTag: 60d9454c-aacc-4224-bb37-487e53087e2d
+		summarizeBy: none
+		sourceColumn: City
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'State ID'
+		dataType: string
+		lineageTag: fff46e23-fc5b-47d0-85dd-3f3113749c16
+		summarizeBy: none
+		sourceColumn: State ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'State Name'
+		dataType: string
+		lineageTag: 36204ff6-bf01-4405-a6fe-0508b1fa264e
+		summarizeBy: none
+		sourceColumn: State Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Population
+		dataType: int64
+		formatString: 0
+		lineageTag: a5300528-115d-42cb-a637-2961dc3c0a10
+		summarizeBy: none
+		sourceColumn: Population
+
+		annotation SummarizationSetBy = Automatic
+
+	column Density
+		dataType: decimal
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 090d8c3f-c534-4458-9e38-bfd5e1065315
+		summarizeBy: none
+		sourceColumn: Density
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column County
+		dataType: string
+		lineageTag: 92e0de7a-a8d4-4c90-8115-13598859e502
+		summarizeBy: none
+		sourceColumn: County
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DIM_Locations = m
+		mode: import
+		source =
+				let
+				    Source = source_tables,
+				    #"Filtered Rows" = Table.SelectRows(Source, each [Table] = "uszips"),
+				    Table = #"Filtered Rows"{0}[Table],
+				    URL = pDataFileLocation & Table & ".csv",
+				    URLContents = Web.Contents(URL),
+				    CSVExtract = Csv.Document(URLContents),
+				    #"Promoted Headers" = Table.PromoteHeaders(CSVExtract, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"lat", type number}, {"lng", type number}, {"Population", Int64.Type}, {"Density", Currency.Type}, {"imprecise", type logical}, {"military", type logical}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

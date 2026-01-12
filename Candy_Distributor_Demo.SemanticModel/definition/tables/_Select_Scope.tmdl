@@ -1,0 +1,83 @@
+table _Select_Scope
+	lineageTag: dceb4da4-12b9-4960-b187-a514d08c2412
+
+	calculationGroup
+		precedence: 20
+
+		calculationItem 'Base Measure' = SELECTEDMEASURE()
+
+		calculationItem 'In MFG' =
+				
+				IF( MAX( 'Calendar'[Date] ) <= CALCULATE( MAX( FCT_Sales[Actual Ship Date] ), ALL( 'Calendar' ) ),
+				    VAR _maxdate = MAX( 'Calendar'[Date] )
+				    VAR _ordered =
+				        CALCULATE(
+				            SELECTEDMEASURE(),
+				            _Select_Date[Date Field] = "Order Date",
+				            ALL( 'Calendar' ), 'Calendar'[Date] <= _maxdate
+				        )
+				    VAR _shipped =
+				        CALCULATE(
+				            SELECTEDMEASURE(),
+				            _Select_Date[Date Field] = "Ship Date",
+				            ALL( 'Calendar' ), 'Calendar'[Date] <= _maxdate
+				        )
+				    RETURN _ordered - _shipped
+				)
+
+		calculationItem 'In Transit' =
+				
+				IF( MAX( 'Calendar'[Date] ) <= CALCULATE( MAX( FCT_Sales[Arrival Date] ), ALL( 'Calendar' ) ),
+				    VAR _maxdate = MAX( 'Calendar'[Date] )
+				    VAR _shipped =
+				        CALCULATE(
+				            SELECTEDMEASURE(),
+				            _Select_Date[Date Field] = "Ship Date",
+				            ALL( 'Calendar' ), 'Calendar'[Date] <= _maxdate
+				        )
+				    VAR _delivered =
+				        CALCULATE(
+				            SELECTEDMEASURE(),
+				            _Select_Date[Date Field] = "Delivery Date",
+				            ALL( 'Calendar' ), 'Calendar'[Date] <= _maxdate
+				        )
+				    RETURN _shipped - _delivered
+				)
+
+		calculationItem 'In Process' =
+				
+				IF( MAX( 'Calendar'[Date] ) <= CALCULATE( MAX( FCT_Sales[Arrival Date] ), ALL( 'Calendar' ) ),
+				    VAR _maxdate = MAX( 'Calendar'[Date] )
+				    VAR _ordered =
+				        CALCULATE(
+				            SELECTEDMEASURE(),
+				            _Select_Date[Date Field] = "Order Date",
+				            ALL( 'Calendar' ), 'Calendar'[Date] <= _maxdate
+				        )
+				    VAR _delivered =
+				        CALCULATE(
+				            SELECTEDMEASURE(),
+				            _Select_Date[Date Field] = "Delivery Date",
+				            ALL( 'Calendar' ), 'Calendar'[Date] <= _maxdate
+				        )
+				    RETURN _ordered - _delivered
+				)
+
+	column Scope
+		dataType: string
+		lineageTag: de1c0e1d-a4b3-4b64-9a37-fbe2085d4c3c
+		summarizeBy: none
+		sourceColumn: Name
+		sortByColumn: Ordinal
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ordinal
+		dataType: int64
+		formatString: 0
+		lineageTag: 067ccecf-99b8-4222-953d-e16c3ad0620a
+		summarizeBy: sum
+		sourceColumn: Ordinal
+
+		annotation SummarizationSetBy = Automatic
+

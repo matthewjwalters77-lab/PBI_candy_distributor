@@ -1,0 +1,50 @@
+table DIM_Distribution_Class
+	lineageTag: ed33a7b0-5d7f-430b-a6f3-b1871230192e
+
+	column 'Miles Per Day'
+		dataType: int64
+		formatString: 0
+		lineageTag: 1fdbb37b-0169-439e-bcf1-cb27a506b5bd
+		summarizeBy: none
+		sourceColumn: Miles Per Day
+
+		annotation SummarizationSetBy = Automatic
+
+	column CPM
+		dataType: double
+		lineageTag: ae29913d-899d-4b9b-8dfb-316716e8dfa0
+		summarizeBy: none
+		sourceColumn: CPM
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Ship Mode'
+		dataType: string
+		lineageTag: 6aa989a3-aaee-43df-8b80-d8a6fb81d343
+		summarizeBy: none
+		sourceColumn: Ship Mode
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DIM_Distribution_Class = m
+		mode: import
+		source =
+				let
+				    Source = source_tables,
+				    #"Filtered Rows" = Table.SelectRows(Source, each [Table] = "Candy_Distribution_Class"),
+				    Table = #"Filtered Rows"{0}[Table],
+				    URL = pDataFileLocation & Table & ".csv",
+				    URLContents = Web.Contents(URL),
+				    CSVExtract = Csv.Document(URLContents),
+				    #"Promoted Headers" = Table.PromoteHeaders(CSVExtract, [PromoteAllScalars=true]),
+				    #"Reordered Columns" = Table.ReorderColumns(#"Promoted Headers",{"Ship Mode", "Miles Per Day", "CPM"}),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Reordered Columns",{{"Miles Per Day", Int64.Type}, {"CPM", type number}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

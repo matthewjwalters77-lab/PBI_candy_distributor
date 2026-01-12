@@ -1,0 +1,30 @@
+relationship AutoDetected_8c528e2f-43af-4dba-b92c-3420d0e42ebe
+	fromColumn: DIM_Products.Factory
+	toColumn: DIM_Factories.Factory
+
+relationship af2dc521-04a2-88bd-0833-234f570d1ef0
+	fromColumn: FCT_Sales.'Product ID'
+	toColumn: DIM_Products.'Product ID'
+
+relationship e7edf36d-093e-a9dd-d598-8aa5a7170fb8
+	fromColumn: FCT_Sales.'Ship Mode'
+	toColumn: DIM_Distribution_Class.'Ship Mode'
+
+relationship df59b02f-9599-d7e8-e16b-e00049311cba
+	fromColumn: FCT_Sales.'Postal Code'
+	toColumn: DIM_Locations.'Zip Code'
+
+relationship de59de75-07b9-131e-227b-68280da27c3f
+	fromColumn: FCT_Sales.'Order Date'
+	toColumn: Calendar.Date
+
+relationship 01f10704-c528-ec14-12cb-31c7cf0069a5
+	isActive: false
+	fromColumn: FCT_Sales.'Actual Ship Date'
+	toColumn: Calendar.Date
+
+relationship 18bb46ed-e15e-eebb-4d45-7a0f1ccac0e3
+	isActive: false
+	fromColumn: FCT_Sales.'Arrival Date'
+	toColumn: Calendar.Date
+

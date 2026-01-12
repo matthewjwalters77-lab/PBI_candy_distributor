@@ -1,0 +1,19 @@
+expression pDataFileLocation = "https://mwalters-data-storage.atl1.cdn.digitaloceanspaces.com/US_Candy_Distributor/" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 41c4a87d-0c11-417f-a783-5e70a8ac6532
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Text
+
+expression source_tables =
+		let
+		    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45Wck7MS6mMd0tMLskvykwtVorVgYkFFOWnlCaXIAsFJ+agKHHJLC4pykwqLcnMz4t3zkkshkiWFldlFgCZsQA=", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Table = _t]),
+		    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Table", type text}})
+		in
+		    #"Changed Type"
+	lineageTag: 9f511ff0-509e-4c3f-9876-2306127ea9ec
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

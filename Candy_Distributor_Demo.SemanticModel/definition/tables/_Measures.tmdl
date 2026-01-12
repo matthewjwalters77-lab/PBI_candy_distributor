@@ -1,0 +1,104 @@
+table _Measures
+	lineageTag: 05b3b086-7772-4fb3-81f2-56c47603158d
+
+	measure 'Production Cost' = CALCULATE( SUM( FCT_Sales[Cost] ) )
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: Financial
+		lineageTag: 43d8e3cd-9ba2-4d4b-ad94-bca2b006347b
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Gross Profit' = [Total Sales] - [Cost of Sales]
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: Financial
+		lineageTag: c2a7a475-9c24-43ea-8db7-8c4123952538
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Total Sales' = CALCULATE( SUM( FCT_Sales[Sales] ) )
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: Financial
+		lineageTag: 3de27341-a7be-46a9-ba27-16f9ec06cbf6
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Gross Margin' =
+			
+			VAR _sales = [Total Sales]
+			VAR _cost = [Cost of Sales]
+			RETURN DIVIDE( _sales - _cost, _sales )
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: Financial
+		lineageTag: cea162c4-be81-42cf-9129-46ae0e6e887a
+
+	measure 'Order Count' = CALCULATE( DISTINCTCOUNT( FCT_Sales[Order ID] ) )
+		formatString: #,0
+		displayFolder: Operations
+		lineageTag: 0d239b5a-0b37-4dba-815d-4ca71c83f7fb
+
+	measure 'Customer Count' = CALCULATE( DISTINCTCOUNT( FCT_Sales[Customer ID] ) )
+		formatString: #,0
+		displayFolder: Operations
+		lineageTag: 858d3484-63cf-4840-a9cb-cb5a5d5af833
+
+	measure 'Total Units' = CALCULATE( SUM( FCT_Sales[Units] ) )
+		formatString: #,0
+		displayFolder: Operations
+		lineageTag: 82005aed-66e1-4def-b7db-bc7586b8b21c
+
+	measure 'Shipment Miles' =
+			
+			SUMX(
+			    FCT_Sales,
+			    Haversine(
+			        RELATED( DIM_Factories[Latitude] ),
+			        RELATED( DIM_Factories[Longitude] ),
+			        RELATED( DIM_Locations[lat] ),
+			        RELATED( DIM_Locations[lng] ),
+			        "MI"
+			    )
+			)
+		formatString: #,0
+		displayFolder: Operations
+		lineageTag: 7a9289ee-91ce-4337-b8ba-339b49c80a00
+
+	measure 'Transportation Cost' = CALCULATE( SUM( FCT_Sales[Shipping Cost] ) )
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: Financial
+		lineageTag: 63e66cb3-ca0b-4f2a-969f-f6cfd250a420
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Days To Deliver' =
+			
+			AVERAGEX(
+			    FCT_Sales,
+			    FCT_Sales[Arrival Date] - FCT_Sales[Order Date]
+			)
+		formatString: 0.0
+		displayFolder: Operations
+		lineageTag: dacaf1d8-3e66-41b0-ba15-3a00520c7e36
+
+	measure 'Cost of Sales' = [Production Cost] + [Transportation Cost]
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: Financial
+		lineageTag: a1402b44-e0e8-42c5-a28a-98df0c0bfcad
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column Value
+		isHidden
+		formatString: 0
+		lineageTag: 50395542-860f-462c-b6c9-ee72817f61a3
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Value]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition _Measures = calculated
+		mode: import
+		source = {BLANK()}
+
+	annotation PBI_Id = a0f21ad30f9943cc97e7bde8aa1326e8
+

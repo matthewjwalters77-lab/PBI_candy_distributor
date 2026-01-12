@@ -1,0 +1,36 @@
+function Haversine =
+		
+		(
+		    lat1: scalar double val,
+		    lng1: scalar double val,
+		    lat2: scalar double val,
+		    lng2: scalar double val,
+		    units: scalar string val
+		    ) =>
+				VAR _earthRadius = SWITCH( LOWER( units ), "mi", 3959, "km", 6371)
+				VAR _lat1 = lat1
+				VAR _lng1 = lng1
+				VAR _lat2 = lat2
+				VAR _lng2 = lng2
+		
+				-- Convert degrees to radians
+				VAR _radLat1 = _lat1 * PI() / 180
+				VAR _radLat2 = _lat2 * PI() / 180
+				VAR _radLng1 = _lng1 * PI() / 180
+				VAR _radLng2 = _lng2 * PI() / 180
+		
+				-- Differences
+				VAR _deltaLat = _radLat2 - _radLat1
+				VAR _deltaLng = _radLng2 - _radLng1
+		
+				-- Haversine calculation
+				VAR _a =
+				SIN(_deltaLat / 2) ^ 2 +
+				COS(_radLat1) * COS(_radLat2) * SIN(_deltaLng / 2) ^ 2
+		
+				VAR _c = 2 * ASIN(SQRT(_a))
+		
+				RETURN
+					_earthRadius * _c
+	lineageTag: af333e94-8538-4dfe-a6a3-85a4096490cb
+
