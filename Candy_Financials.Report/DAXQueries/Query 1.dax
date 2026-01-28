@@ -1,0 +1,7 @@
+DEFINE
+MEASURE _Measures[distance] = SUMX( FCT_Sales, Haversine(RELATED(DIM_Factories[Latitude]), RELATED(DIM_Factories[Longitude]), RELATED(DIM_Locations[lat]), RELATED(DIM_Locations[lng]), "mi"))
+EVALUATE
+ADDCOLUMNS(
+	FCT_Sales,
+	"column", Haversine()
+)

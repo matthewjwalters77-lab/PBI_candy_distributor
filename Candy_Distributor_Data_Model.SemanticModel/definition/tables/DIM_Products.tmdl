@@ -1,0 +1,73 @@
+table DIM_Products
+	lineageTag: 635c16e9-b548-4e3d-b0b4-7aa0ed0e324a
+
+	column Division
+		dataType: string
+		lineageTag: 7d17151d-4dbc-45ac-8ed5-0ba961068132
+		summarizeBy: none
+		sourceColumn: Division
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Product Name'
+		dataType: string
+		lineageTag: 01ce509e-916c-4a68-a759-3a2b86b0145d
+		summarizeBy: none
+		sourceColumn: Product Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Factory
+		dataType: string
+		lineageTag: 19b1fd9b-e1e9-48b4-a210-4b45a8ea30cb
+		summarizeBy: none
+		sourceColumn: Factory
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Product ID'
+		dataType: string
+		isHidden
+		lineageTag: 4daf449f-40d1-437c-824f-f66fecc6bc12
+		summarizeBy: none
+		sourceColumn: Product ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Factory Latitude' = RELATED( DIM_Factories[Latitude] )
+		lineageTag: 2651bb2b-cc62-4bd2-afef-fe0cf5c78af0
+		summarizeBy: none
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Factory Longitude' = RELATED( DIM_Factories[Longitude] )
+		lineageTag: 890c2bcc-b649-47a6-86cc-090b0b1b0caa
+		summarizeBy: none
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition DIM_Products = m
+		mode: import
+		source =
+				let
+				    Source = source_tables,
+				    #"Filtered Rows" = Table.SelectRows(Source, each [Table] = "Candy_Products"),
+				    Table = #"Filtered Rows"{0}[Table],
+				    URL = pDataFileLocation & Table & ".csv",
+				    URLContents = Web.Contents(URL),
+				    CSVExtract = Csv.Document(URLContents),
+				    #"Promoted Headers" = Table.PromoteHeaders(CSVExtract, [PromoteAllScalars=true]),
+				    #"Removed Columns" = Table.RemoveColumns(#"Promoted Headers",{"Unit Price", "Unit Cost"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

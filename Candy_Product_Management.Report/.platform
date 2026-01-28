@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Candy_Product_Management"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "faf179d1-c0c9-4e21-9046-fd71f872c4df"
+  }
+}

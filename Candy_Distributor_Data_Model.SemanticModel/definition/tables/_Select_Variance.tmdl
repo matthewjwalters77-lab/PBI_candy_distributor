@@ -1,0 +1,113 @@
+/// Calculation group to select variances for time intelligence
+table _Select_Variance
+	lineageTag: 73aaa8df-bb49-47a7-b56e-99b16279c6e0
+
+	calculationGroup
+		precedence: 60
+
+		calculationItem Base = SELECTEDMEASURE()
+
+		calculationItem MoM =
+				
+				VAR _current = SELECTEDMEASURE()
+				VAR _previous =
+				    CALCULATE (
+				        SELECTEDMEASURE(),
+				        DATEADD (
+				            'Calendar'[Date],
+				            -1,
+				            MONTH
+				        )
+				    )
+				RETURN
+				    IF (
+				        NOT ISBLANK ( _current )
+				            && NOT ISBLANK ( _previous ),
+				        _current - _previous
+				    )
+
+		calculationItem MoM% =
+				
+				VAR _current = SELECTEDMEASURE()
+				VAR _previous =
+				    CALCULATE (
+				        SELECTEDMEASURE(),
+				        DATEADD (
+				            'Calendar'[Date],
+				            -1,
+				            MONTH
+				        )
+				    )
+				RETURN
+				    IF (
+				        NOT ISBLANK ( _current )
+				            && NOT ISBLANK ( _previous ),
+				        DIVIDE (
+				            _current - _previous,
+				            _previous
+				        )
+				    )
+
+			formatStringDefinition = "0.0%"
+
+		calculationItem YoY =
+				
+				VAR _current = SELECTEDMEASURE()
+				VAR _previous =
+				    CALCULATE (
+				        SELECTEDMEASURE(),
+				        DATEADD (
+				            'Calendar'[Date],
+				            -12,
+				            MONTH
+				        )
+				    )
+				RETURN
+				    IF (
+				        NOT ISBLANK ( _current )
+				            && NOT ISBLANK ( _previous ),
+				        _current - _previous
+				    )
+
+		calculationItem YoY% =
+				
+				VAR _current = SELECTEDMEASURE()
+				VAR _previous =
+				    CALCULATE (
+				        SELECTEDMEASURE(),
+				        DATEADD (
+				            'Calendar'[Date],
+				            -12,
+				            MONTH
+				        )
+				    )
+				RETURN
+				    IF (
+				        NOT ISBLANK ( _current )
+				            && NOT ISBLANK ( _previous ),
+				        DIVIDE (
+				            _current - _previous,
+				            _previous
+				        )
+				    )
+
+			formatStringDefinition = "0.0%"
+
+	column Variance
+		dataType: string
+		lineageTag: 91b7eb40-7ea9-4f02-a5f6-5ac4a1fdcbaf
+		summarizeBy: none
+		sourceColumn: Name
+		sortByColumn: Ordinal
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ordinal
+		dataType: int64
+		formatString: 0
+		lineageTag: aa43fa5d-89cb-4d24-916f-f49a39efbf80
+		summarizeBy: sum
+		sourceColumn: Ordinal
+
+		annotation SummarizationSetBy = Automatic
+

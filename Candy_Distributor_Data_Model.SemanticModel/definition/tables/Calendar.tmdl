@@ -1,0 +1,429 @@
+table Calendar
+	lineageTag: 45fc5ebd-098b-414a-885c-d222720b4754
+	dataCategory: Time
+
+	column Date
+		isKey
+		formatString: m/d/yy
+		lineageTag: 4bade420-f509-4e7e-89ab-e7ffda39d37e
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column Year
+		formatString: 0
+		lineageTag: 86ceab2a-525b-42f7-96a3-1a9759004c7e
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Year]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Start of Year'
+		isHidden
+		formatString: yyyy
+		lineageTag: 4005a954-885c-44dc-b68c-ff98475f8997
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Start of Year]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column 'End of Year'
+		formatString: yyyy
+		lineageTag: 17c9b8f1-7fee-4fe8-9b02-c21cec52514c
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [End of Year]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column Month
+		formatString: 0
+		lineageTag: be9fa451-cc76-4a4f-9901-6d966ea47d45
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Month]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Start of Month'
+		isHidden
+		formatString: mmmm yyyy
+		lineageTag: 812ffa6a-0b89-4ea6-ad07-743adf3b349e
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Start of Month]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column 'End of Month'
+		formatString: mmmm yyyy
+		lineageTag: 5ab3a94a-dff8-4444-8d08-723108359bde
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [End of Month]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column 'Days in Month'
+		isHidden
+		formatString: 0
+		lineageTag: edb2adc2-2c2c-4935-b8b8-44cd5828949b
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Days in Month]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Year Month Number'
+		isHidden
+		formatString: 0
+		lineageTag: a265ffe6-0740-44aa-a2e2-03edb17faf0e
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Year Month Number]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Year Month Name'
+		lineageTag: 48804a90-c7c9-45ba-b42a-6cfcb1c47187
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Year Month Name]
+		sortByColumn: 'Year Month Number'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Day
+		isHidden
+		formatString: 0
+		lineageTag: 57923971-50d0-486d-ae4b-120f12ae7a89
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Day]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Day Name'
+		isHidden
+		lineageTag: a6468319-4acb-4aa9-b668-03846e51f36e
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Day Name]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Day Name Short'
+		isHidden
+		lineageTag: dcf67568-b6ca-4110-b702-38aa36d53d1e
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Day Name Short]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Day of Week'
+		isHidden
+		formatString: 0
+		lineageTag: f82043b2-2dfd-4ec2-a69d-1a7a35b2f1e0
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Day of Week]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Day of Year'
+		isHidden
+		formatString: 0
+		lineageTag: 3a1a8a7d-33b5-4df8-a9ae-dc50fde7ed4f
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Day of Year]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Name'
+		lineageTag: 5e17e94a-e1e0-46aa-80f2-c334caccdcd9
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Month Name]
+		sortByColumn: Month
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Name Short'
+		lineageTag: 2515aee3-02f0-4e96-8141-58044887a500
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Month Name Short]
+		sortByColumn: Month
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quarter
+		isHidden
+		formatString: 0
+		lineageTag: d82df446-90e3-4c53-a9af-768b440ebe02
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Quarter]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Quarter Name'
+		lineageTag: 3a8d6932-bc09-471b-9a25-24f138fedbc4
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Quarter Name]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Year Quarter Number'
+		isHidden
+		formatString: 0
+		lineageTag: 72296307-78d8-4922-8854-3b08baaee241
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Year Quarter Number]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Year Quarter Name'
+		isHidden
+		lineageTag: 7bea9dd7-faaa-4a1b-b750-955d47f43ed2
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Year Quarter Name]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Start of Quarter'
+		isHidden
+		formatString: mmmm yyyy
+		lineageTag: ddbc5252-252a-4daa-962f-5f6d1064be1b
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Start of Quarter]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column 'End of Quarter'
+		formatString: mmmm yyyy
+		lineageTag: de29b944-8bb9-4e8a-8097-139d870b4685
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [End of Quarter]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column 'Week of Year'
+		isHidden
+		formatString: 0
+		lineageTag: 9f6ad670-e273-49b9-9a6c-37fbd4b1ff6c
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Week of Year]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Start of Week'
+		isHidden
+		formatString: m/d/yy
+		lineageTag: a15edf80-cc62-4ec8-9dc9-0558fd1a2f3b
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Start of Week]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column 'End of Week'
+		formatString: m/d/yy
+		lineageTag: 7013d623-aaaa-463c-b65e-a3825c1974d9
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [End of Week]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column 'Fiscal Year'
+		isHidden
+		formatString: 0
+		lineageTag: 1983498e-8092-4983-97dc-a142a760ac18
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Fiscal Year]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Fiscal Quarter'
+		isHidden
+		formatString: 0
+		lineageTag: b924e811-b2e9-48cf-b048-f3351376b476
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Fiscal Quarter]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Fiscal Month'
+		isHidden
+		formatString: 0
+		lineageTag: 37005599-93e9-4aa2-b4a9-46145026e90b
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Fiscal Month]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Day Offset'
+		isHidden
+		formatString: 0
+		lineageTag: 50236822-08a0-46e4-b064-8d9d96716baf
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Day Offset]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Offset'
+		isHidden
+		formatString: 0
+		lineageTag: 851fb49e-d507-4c2b-904e-8b4ac30c2915
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Month Offset]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Quarter Offset'
+		isHidden
+		formatString: 0
+		lineageTag: bc4ff75e-0a07-4146-8edc-596a75ddaa12
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Quarter Offset]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Year Offset'
+		isHidden
+		formatString: 0
+		lineageTag: d2e2b247-55ed-4359-9490-aa1490bda962
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Year Offset]
+
+		annotation SummarizationSetBy = Automatic
+
+	column adjusted_date
+		formatString: m/d/yy
+		lineageTag: 1ec53b16-82d2-4910-a8ca-31d7f1d43668
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [adjusted_date]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	partition Calendar = calculated
+		mode: import
+		source = ```
+				
+				VAR _weekstartday = 1 // set the start day of the week. 1 for Sunday, 2 for Monday, etc.
+				VAR _current_year_start = DATE( YEAR( TODAY() ), 1, 1 )
+				VAR _date_adjust = _current_year_start - DATE( 2024, 12, 31 ) - 1
+				VAR _fromYear = YEAR( MIN( FCT_Sales[Order Date] ) + _date_adjust )// set the start year of the date dimension. dates start from 1st of January of this year
+				VAR _toYear =  _fromYear + 3// set the end year of the date dimension. dates end at 31st of December of this year
+				VAR _startOfFiscalYear = 1 // set the month number that is start of the financial year. example; if fiscal year start is July, value is 7
+				//************** 
+				RETURN
+				    GENERATE (
+				        CALENDAR ( DATE ( _fromYear, 1, 1 ), DATE ( _toYear, 12, 31 ) ),
+				        VAR _date = [Date]
+				        VAR _weekday =
+				            WEEKDAY ( _date, _weekstartday )
+				        VAR _year =
+				            YEAR ( [Date] )
+				        RETURN
+				            ROW (
+				                "Year", _year,
+				                "Start of Year", DATE ( _year, 1, 1 ),
+				                "End of Year", DATE ( _year, 12, 31 ),
+				                "Month", MONTH ( _date ),
+				                "Start of Month", DATE ( _year, MONTH ( _date ), 1 ),
+				                "End of Month", EOMONTH ( _date, 0 ),
+				                "Days in Month", DATEDIFF ( DATE ( _year, MONTH ( _date ), 1 ), EOMONTH ( _date, 0 ), DAY ) + 1,
+				                "Year Month Number", INT ( FORMAT ( _date, "YYYYMM" ) ),
+				                "Year Month Name", FORMAT ( _date, "YYYY-MMM" ),
+				                "Day", DAY ( _date ),
+				                "Day Name", FORMAT ( _date, "DDDD" ),
+				                "Day Name Short", FORMAT ( _date, "DDD" ),
+				                "Day of Week", WEEKDAY ( _date ),
+				                "Day of Year", DATEDIFF ( DATE ( _year, 1, 1 ), _date, DAY ) + 1,
+				                "Month Name", FORMAT ( _date, "MMMM" ),
+				                "Month Name Short", FORMAT ( _date, "MMM" ),
+				                "Quarter", QUARTER ( _date ),
+				                "Quarter Name", "Q" & FORMAT ( _date, "Q" ),
+				                "Year Quarter Number", INT ( FORMAT ( _date, "YYYYQ" ) ),
+				                "Year Quarter Name", FORMAT ( _date, "YYYY" ) & " Q" & FORMAT ( _date, "Q" ),
+				                "Start of Quarter", DATE ( _year, ( QUARTER ( _date ) * 3 ) - 2, 1 ),
+				                "End of Quarter", EOMONTH ( DATE ( _year, QUARTER ( _date ) * 3, 1 ), 0 ),
+				                "Week of Year", WEEKNUM ( _date ),
+				                "Start of Week", _date - WEEKDAY ( _date ) + 1,
+				                "End of Week", _date + 7 - WEEKDAY ( _date ),
+				                "Fiscal Year", IF ( _startOfFiscalYear = 1, _year, _year + QUOTIENT ( MONTH ( _date ) + ( 13 - _startOfFiscalYear ), 13 ) ),
+				                "Fiscal Quarter", QUARTER ( DATE ( _year, MOD ( MONTH ( _date ) + ( 13 - _startOfFiscalYear ) - 1, 12 ) + 1, 1 ) ),
+				                "Fiscal Month", MOD ( MONTH ( _date ) + ( 13 - _startOfFiscalYear ) - 1, 12 ) + 1,
+				                "Day Offset", DATEDIFF ( _current_year_start, _date, DAY ),
+				                "Month Offset", DATEDIFF ( _current_year_start, _date, MONTH ),
+				                "Quarter Offset", DATEDIFF ( _current_year_start, _date, QUARTER ),
+				                "Year Offset", DATEDIFF ( _current_year_start, _date, YEAR ),
+				                "adjusted_date", _date - _date_adjust
+				            )
+				    )
+				```
+
+	annotation PBI_Id = 9861999c9adb40618a58aca9e81e1029
+

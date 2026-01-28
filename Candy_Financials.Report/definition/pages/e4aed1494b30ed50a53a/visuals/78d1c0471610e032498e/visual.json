@@ -1,0 +1,311 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "78d1c0471610e032498e",
+  "position": {
+    "x": 10.909090909090908,
+    "y": 400,
+    "z": 0,
+    "height": 320,
+    "width": 620,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_P&L"
+                    }
+                  },
+                  "Property": "P&L Category"
+                }
+              },
+              "queryRef": "_P&L.P&L Category",
+              "nativeQueryRef": "P&L Category",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_P&L"
+                    }
+                  },
+                  "Property": "P&L Item"
+                }
+              },
+              "queryRef": "_P&L.P&L Item",
+              "nativeQueryRef": "P&L Item",
+              "active": true
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Actuals"
+                }
+              },
+              "queryRef": "_Measures.Actuals",
+              "nativeQueryRef": "Actuals"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Actuals PY"
+                }
+              },
+              "queryRef": "_Measures.Actuals PY",
+              "nativeQueryRef": "Actuals PY"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Actuals vs PY"
+                }
+              },
+              "queryRef": "_Measures.Actuals vs PY",
+              "nativeQueryRef": "Actuals vs PY"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Actuals vs PY%"
+                }
+              },
+              "queryRef": "_Measures.Actuals vs PY%",
+              "nativeQueryRef": "Actuals vs PY%"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Pct of Revenue"
+                }
+              },
+              "queryRef": "_Measures.Pct of Revenue",
+              "nativeQueryRef": "Pct of Revenue"
+            }
+          ]
+        }
+      }
+    },
+    "expansionStates": [
+      {
+        "roles": [
+          "Rows"
+        ],
+        "levels": [
+          {
+            "queryRefs": [
+              "_P&L.P&L Category"
+            ],
+            "isPinned": true
+          },
+          {
+            "queryRefs": [
+              "_P&L.P&L Item"
+            ],
+            "isCollapsed": true,
+            "isPinned": true
+          }
+        ],
+        "root": {}
+      }
+    ],
+    "objects": {
+      "subTotals": [
+        {
+          "properties": {
+            "perRowLevel": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        },
+        {
+          "properties": {
+            "levelSubtotalEnabled": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_P&L.P&L Category"
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "visualTooltip": [
+        {
+          "properties": {
+            "type": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Canvas'"
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "section": {
+              "expr": {
+                "Literal": {
+                  "Value": "'b5309dae3feab9931700'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "ca525704364ab0e39c81",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Actuals"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "bb5857b16b0b0d03e7ae",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Actuals vs PY"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "9666267a5c28a985e178",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Actuals PY"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "a3b992bc38413631cd59",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Actuals vs PY%"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "0a66b7e883b3a2eac4be",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Pct of Revenue"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "bbbac1d78b76318daa51",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_P&L"
+              }
+            },
+            "Property": "P&L Category"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "da962bee4b3ef8c7a890",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_P&L"
+              }
+            },
+            "Property": "P&L Item"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
+  }
+}

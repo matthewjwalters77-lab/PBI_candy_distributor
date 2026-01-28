@@ -1,0 +1,79 @@
+table _P&L
+	lineageTag: 8819dfab-edab-4e17-94fc-b05fe97bfa40
+
+	column 'P&L Category'
+		dataType: string
+		lineageTag: c3db8689-5043-4c32-a38e-38f629cfbdbd
+		summarizeBy: none
+		sourceColumn: P&L Category
+		sortByColumn: Cat_Ordinal
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'P&L Item'
+		dataType: string
+		lineageTag: 36466798-1d0a-4090-93be-c297e12b9dd5
+		summarizeBy: none
+		sourceColumn: P&L Item
+		sortByColumn: Item_Ordinal
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cat_Ordinal
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 65f9f348-fe8c-4be9-913d-8f29c574e086
+		summarizeBy: sum
+		sourceColumn: Cat_Ordinal
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Item_Ordinal
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: d28c7e46-5e82-4dba-a205-2c678389972d
+		summarizeBy: sum
+		sourceColumn: Item_Ordinal
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Units
+		dataType: string
+		lineageTag: f3972621-a9e8-4a9c-818d-e02fbc5390b5
+		summarizeBy: none
+		sourceColumn: Units
+
+		annotation SummarizationSetBy = Automatic
+
+	column Summary
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 6656f280-5de8-4389-b5ef-08a31b065b31
+		summarizeBy: none
+		sourceColumn: Summary
+
+		annotation SummarizationSetBy = Automatic
+
+	partition _P&L = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("fZAxD4IwEIX/CiFhYwBU1BEFiYPBCE7I0NQTGwmQQo0/3zaeigoO117b7728a5rqO7hCKUA39ZgU0MjdxtrHvlxXpGhAz8wuKTvNo5QLUiDr9PDLKIzlxZZXR0FbVpXIjYbZ+MzqmpU5kuMeMuRV02jS9MRa+fB1VN6Tlyrh4o9oQ3jOShS5soyuJKqDm0oUHoRlOa6HcaY9kRCVfhdoH+kVOhtGfag5UEbwVxQ976WBE+X4jh4s1gnOaFu/gw4oNOOpsT/mzO4=", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [#"P&L Category" = _t, #"P&L Item" = _t, Cat_Ordinal = _t, Item_Ordinal = _t, Units = _t, Summary = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Cat_Ordinal", Int64.Type}, {"Item_Ordinal", Int64.Type}, {"Summary", type logical}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+
