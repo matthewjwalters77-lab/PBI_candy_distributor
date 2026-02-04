@@ -1,0 +1,44 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "a67661d97c0710e984c0",
+  "position": {
+    "x": 9.8753117206982548,
+    "y": 64.638403990024941,
+    "z": 1000,
+    "height": 320.49875311720695,
+    "width": 619.45137157107229,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Candy Distributor Data Model Information",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "24pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

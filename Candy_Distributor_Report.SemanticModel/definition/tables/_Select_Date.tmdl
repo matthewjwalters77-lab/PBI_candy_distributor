@@ -1,0 +1,40 @@
+table _Select_Date
+	lineageTag: e46fb910-9df3-46fa-8aaf-d99315d69a25
+
+	calculationGroup
+		precedence: 90
+
+		calculationItem 'Invoice Date' =
+				
+				SELECTEDMEASURE()
+
+		calculationItem 'Order Date' =
+				
+				OrderDate( SELECTEDMEASURE() )
+
+		calculationItem 'Ship Date' =
+				
+				ShipDate( SELECTEDMEASURE() )
+
+		calculationItem 'Delivery Date' =
+				
+				DeliverDate( SELECTEDMEASURE() )
+
+	column 'Date Field'
+		dataType: string
+		lineageTag: d51c9903-3bf3-4c75-8dbc-53856d1ceb91
+		summarizeBy: none
+		sourceColumn: Name
+		sortByColumn: Ordinal
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ordinal
+		dataType: int64
+		formatString: 0
+		lineageTag: 9d37654a-9cf7-4a1d-843c-80df44df0ff5
+		summarizeBy: sum
+		sourceColumn: Ordinal
+
+		annotation SummarizationSetBy = Automatic
+

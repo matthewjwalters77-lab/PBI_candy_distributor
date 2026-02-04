@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Candy_Distributor_Report"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "629a5479-94e6-46a2-9c74-e59f9e2e6005"
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "be02712df25dba9906cd",
+  "position": {
+    "x": 325,
+    "y": 285.45454545454544,
+    "z": 1000,
+    "height": 100,
+    "width": 305,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "kpi",
+    "query": {
+      "queryState": {
+        "TrendLine": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Calendar"
+                    }
+                  },
+                  "Property": "Year"
+                }
+              },
+              "queryRef": "Calendar.Year",
+              "nativeQueryRef": "Year"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "goals": [
+        {
+          "properties": {
+            "distanceLabel": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Percent'"
+                }
+              }
+            },
+            "showGoal": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "status": [
+        {
+          "properties": {
+            "direction": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Negative'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

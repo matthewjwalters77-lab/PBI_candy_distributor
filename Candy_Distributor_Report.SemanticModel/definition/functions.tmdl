@@ -1,0 +1,74 @@
+function Haversine =
+		
+		(
+		    lat1: scalar double val,
+		    lng1: scalar double val,
+		    lat2: scalar double val,
+		    lng2: scalar double val,
+		    units: scalar string val
+		    ) =>
+				VAR _earthRadius = SWITCH( LOWER( units ), "mi", 3959, "km", 6371)
+				VAR _lat1 = lat1
+				VAR _lng1 = lng1
+				VAR _lat2 = lat2
+				VAR _lng2 = lng2
+		
+				-- Convert degrees to radians
+				VAR _radLat1 = _lat1 * PI() / 180
+				VAR _radLat2 = _lat2 * PI() / 180
+				VAR _radLng1 = _lng1 * PI() / 180
+				VAR _radLng2 = _lng2 * PI() / 180
+		
+				-- Differences
+				VAR _deltaLat = _radLat2 - _radLat1
+				VAR _deltaLng = _radLng2 - _radLng1
+		
+				-- Haversine calculation
+				VAR _a =
+				SIN(_deltaLat / 2) ^ 2 +
+				COS(_radLat1) * COS(_radLat2) * SIN(_deltaLng / 2) ^ 2
+		
+				VAR _c = 2 * ASIN(SQRT(_a))
+		
+				RETURN
+					_earthRadius * _c
+	lineageTag: af333e94-8538-4dfe-a6a3-85a4096490cb
+
+function ShipDate =
+		
+		( _measure : expr ) => CALCULATE( _measure, USERELATIONSHIP( FCT_Sales[Actual Ship Date], 'Calendar'[adjusted_date] ) )
+	lineageTag: fce8cddf-ec3c-4235-9382-31f56e053826
+
+function DeliverDate =
+		
+		( _measure : expr ) => CALCULATE( _measure, USERELATIONSHIP( FCT_Sales[Arrival Date], 'Calendar'[adjusted_date] ) )
+	lineageTag: ab9d00f1-2736-48be-8740-167d28fbdf59
+
+function OrderDate =
+		
+		( _measure : expr ) => CALCULATE( _measure, USERELATIONSHIP( FCT_Sales[Order Date], 'Calendar'[adjusted_date] ) )
+	lineageTag: 8083e9a1-21b8-4947-a294-7ecd186aa798
+
+function InvoiceDate =
+		
+		( _measure : expr ) => CALCULATE( _measure, USERELATIONSHIP( FCT_Sales[Invoice Date], 'Calendar'[adjusted_date] ) )
+	lineageTag: 8fdff9c8-17e6-4b61-a7be-484625d4fd78
+
+function WIP =
+		(affectedmeasure: expr, activity: string val) =>
+				VAR _maxdate = MAX('Calendar'[Date])
+				RETURN
+					CALCULATE(
+						SWITCH(
+							activity,
+							"Production", ORDERDATE(affectedmeasure) -  SHIPDATE(affectedmeasure),
+							"Shipping", SHIPDATE(affectedmeasure) - DELIVERDATE(affectedmeasure),
+							"Total", ORDERDATE(affectedmeasure) - DELIVERDATE(affectedmeasure),
+		                    "Financial", DeliverDate(affectedmeasure) - InvoiceDate(affectedmeasure)
+						),
+						ALL('Calendar'),
+						'Calendar'[Date] <= _maxdate,
+						NOT ISBLANK( 'Calendar'[Date] )
+					)
+	lineageTag: 22c4ab27-7589-4eb3-81af-8d9bc110634d
+

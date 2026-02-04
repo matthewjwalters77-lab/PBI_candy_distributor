@@ -1,0 +1,33 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	discourageImplicitMeasures
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBI_QueryOrder = ["pDataFileLocation","format_metrics","_Metrics","source_tables","DIM_Factories","DIM_Products","FCT_Sales","DIM_Locations","DIM_Distribution_Class"]
+
+annotation PBI_ProTooling = ["TMDLView_Desktop","CalcGroup","DaxQueryView_Desktop","DevMode"]
+
+annotation __TEdtr = 1
+
+ref table DIM_Factories
+ref table DIM_Products
+ref table FCT_Sales
+ref table DIM_Locations
+ref table Calendar
+ref table _Measures
+ref table DIM_Distribution_Class
+ref table _Select_Date
+ref table _Select_In_Process
+ref table _Select_Period
+ref table _Select_Variance
+ref table _Metrics
+ref table _Report_Measures
+
+ref cultureInfo en-US
+

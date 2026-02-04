@@ -1,0 +1,279 @@
+table FCT_Sales
+	lineageTag: b1c17270-494d-4ea0-be17-34ab9f4ea2ef
+
+	column 'Row ID'
+		dataType: string
+		isHidden
+		lineageTag: dbecdc31-b7c3-4c7e-947a-c496a08e7d5f
+		summarizeBy: none
+		sourceColumn: Row ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Order ID'
+		dataType: string
+		isHidden
+		lineageTag: da24a1c0-6610-454c-be12-7d47b17549de
+		summarizeBy: none
+		sourceColumn: Order ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Order Date'
+		dataType: dateTime
+		isHidden
+		formatString: m/d/yy
+		lineageTag: 2e7d29be-843e-4653-b774-7ff300b39417
+		summarizeBy: none
+		sourceColumn: Order Date
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column 'Ship Mode'
+		dataType: string
+		isHidden
+		lineageTag: cbbc4402-f802-4c4f-ac18-1213b4d4fffc
+		summarizeBy: none
+		sourceColumn: Ship Mode
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Customer ID'
+		dataType: string
+		lineageTag: 690b7433-9a0b-47eb-8767-33e2c78af0af
+		summarizeBy: none
+		sourceColumn: Customer ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Postal Code'
+		dataType: string
+		isHidden
+		lineageTag: 0853df97-a3a3-4a17-a1e2-f7e36ba9b1ee
+		summarizeBy: none
+		sourceColumn: Postal Code
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Region
+		dataType: string
+		lineageTag: 04f6b8d7-ba54-4cbc-9a33-63f275bbf59f
+		summarizeBy: none
+		sourceColumn: Region
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Product ID'
+		dataType: string
+		isHidden
+		lineageTag: 9e7802bb-2292-460b-9b7c-d15fd16a11ef
+		summarizeBy: none
+		sourceColumn: Product ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sales
+		dataType: decimal
+		isHidden
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 4ecf30bf-4ee1-488c-9580-3549ffb0cea9
+		summarizeBy: sum
+		sourceColumn: Sales
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column Units
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 8c243753-a760-4c42-b7f0-d9839f6f3e27
+		summarizeBy: sum
+		sourceColumn: Units
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Gross Profit'
+		dataType: decimal
+		isHidden
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: feb60706-3053-4851-b66a-32bd901830cf
+		summarizeBy: sum
+		sourceColumn: Gross Profit
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column Cost
+		dataType: decimal
+		isHidden
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: b25b0d31-63a4-48bf-b8d7-63eb35fbb87c
+		summarizeBy: sum
+		sourceColumn: Cost
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column 'Actual Ship Date'
+		dataType: dateTime
+		isHidden
+		formatString: m/d/yy
+		lineageTag: 51c3a57d-0a80-4ce8-ac34-e6e6621d163b
+		summarizeBy: none
+		sourceColumn: Actual Ship Date
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column 'Haversine Miles' = ```
+			
+			VAR _earthRadius = 3959 // Use 6371 for Kilometers
+			VAR _lat1 = RELATED( DIM_Factories[Latitude] )
+			VAR _lng1 = RELATED( DIM_Factories[Longitude] )
+			VAR _lat2 = RELATED( DIM_Locations[lat] )
+			VAR _lng2 = RELATED( DIM_Locations[lng] )
+			
+			-- Convert degrees to radians
+			VAR _radLat1 = _lat1 * PI() / 180
+			VAR _radLat2 = _lat2 * PI() / 180
+			VAR _radLng1 = _lng1 * PI() / 180
+			VAR _radLng2 = _lng2 * PI() / 180
+			
+			-- Differences
+			VAR _deltaLat = _radLat2 - _radLat1
+			VAR _deltaLng = _radLng2 - _radLng1
+			
+			-- Haversine calculation
+			VAR _a = 
+			    SIN(_deltaLat / 2)^2 + 
+			    COS(_radLat1) * COS(_radLat2) * SIN(_deltaLng / 2)^2
+			
+			VAR _c = 2 * ASIN(SQRT(_a))
+			
+			RETURN
+			    _earthRadius * _c
+			```
+		isHidden
+		formatString: 0.00
+		lineageTag: 1baef053-8a3b-4bf4-85e9-07cc04b46caf
+		summarizeBy: sum
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Arrival Date' =
+			
+			VAR _ship_class = FCT_Sales[Ship Mode]
+			VAR _distance_per_day = RELATED( DIM_Distribution_Class[Miles Per Day] )
+			VAR _distance = FCT_Sales[Haversine Miles]
+			VAR _travel_days = ROUNDUP( _distance / _distance_per_day, 0 )
+			VAR _arrival = FCT_Sales[Actual Ship Date] + _travel_days
+			RETURN IF( _arrival < DATE( 2025,1,1) && NOT ISBLANK( FCT_Sales[Actual Ship Date] ), _arrival )
+		dataType: dateTime
+		isHidden
+		formatString: m/d/yy
+		lineageTag: 316e5d58-0081-487a-be45-cd34e2af4d0c
+		summarizeBy: none
+
+		changedProperty = DataType
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column 'Shipping Cost' = RELATED( DIM_Distribution_Class[CPM] ) * FCT_Sales[Haversine Miles] * FCT_Sales[Units]
+		isHidden
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: b0f77872-2657-4dec-8ba0-d3f1a1bfc0b6
+		summarizeBy: sum
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column 'Invoice Date' =
+			
+			VAR _arrival_raw = FCT_Sales[Arrival Date] + 14
+			RETURN
+			IF( NOT ISBLANK( FCT_Sales[Arrival Date] ) && _arrival_raw < DATE( 2025,1,1), _arrival_raw )
+		formatString: m/d/yy
+		lineageTag: e70fc5e4-64ce-441f-9480-013691cff772
+		summarizeBy: none
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	partition FCT_Sales = m
+		mode: import
+		source =
+				let
+				    Source = source_tables,
+				    #"Filtered Rows" = Table.SelectRows(Source, each [Table] = "Candy_Sales"),
+				    Table = #"Filtered Rows"{0}[Table],
+				    URL = pDataFileLocation & Table & ".csv",
+				    URLContents = Web.Contents(URL),
+				    CSVExtract = Csv.Document(URLContents),
+				    #"Promoted Headers" = Table.PromoteHeaders(CSVExtract, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Sales", Currency.Type}, {"Gross Profit", Currency.Type}, {"Cost", Currency.Type}, {"Units", Int64.Type}, {"Order Date", type date}, {"Ship Date", type date}}),
+				    #"Added Custom" = Table.AddColumn(#"Changed Type", "Actual Ship Date", each if Date.AddDays([Ship Date], -2000) < #date(2025,1,1)
+				then Date.AddDays([Ship Date], -2000)
+				else null, type date),
+				    #"Removed Columns" = Table.RemoveColumns(#"Added Custom",{"Country/Region", "City", "State/Province", "Division", "Product Name", "Ship Date"})
+				in
+				    #"Removed Columns"
+
+	changedProperty = IsHidden
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

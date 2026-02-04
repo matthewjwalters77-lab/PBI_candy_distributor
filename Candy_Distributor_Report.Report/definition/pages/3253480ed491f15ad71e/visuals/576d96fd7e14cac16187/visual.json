@@ -1,0 +1,31 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "576d96fd7e14cac16187",
+  "position": {
+    "x": 649.8942229454841,
+    "y": 398.893409275834,
+    "z": 11000,
+    "height": 320.78112286411715,
+    "width": 619.69080553295362,
+    "tabOrder": 11000
+  },
+  "visual": {
+    "visualType": "lineStackedColumnComboChart",
+    "objects": {
+      "valueAxis": [
+        {
+          "properties": {
+            "showAxisTitle": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

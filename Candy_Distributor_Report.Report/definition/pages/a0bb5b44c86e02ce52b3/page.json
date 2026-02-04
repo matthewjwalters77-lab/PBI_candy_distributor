@@ -1,0 +1,10 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.0.0/schema.json",
+  "name": "a0bb5b44c86e02ce52b3",
+  "displayName": "MetricTooltip",
+  "displayOption": "FitToPage",
+  "height": 100,
+  "width": 500,
+  "visibility": "HiddenInViewMode",
+  "type": "Tooltip"
+}

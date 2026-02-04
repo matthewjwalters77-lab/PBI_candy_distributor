@@ -1,0 +1,357 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "4afc34679d2fcf5ee4a8",
+  "position": {
+    "x": 10.909090909090908,
+    "y": 400,
+    "z": 0,
+    "height": 320,
+    "width": 620,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "azureMap",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DIM_Locations"
+                    }
+                  },
+                  "Property": "State Name"
+                }
+              },
+              "queryRef": "DIM_Locations.State Name",
+              "nativeQueryRef": "State Name",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DIM_Locations"
+                    }
+                  },
+                  "Property": "County"
+                }
+              },
+              "queryRef": "DIM_Locations.County",
+              "nativeQueryRef": "County",
+              "active": true
+            }
+          ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FCT_Sales"
+                    }
+                  },
+                  "Property": "Region"
+                }
+              },
+              "queryRef": "FCT_Sales.Region",
+              "nativeQueryRef": "Region"
+            }
+          ]
+        },
+        "Size": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Sales Opportunity"
+                }
+              },
+              "queryRef": "_Measures.Sales Opportunity",
+              "nativeQueryRef": "Sales Opportunity"
+            }
+          ]
+        },
+        "Tooltips": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Total Sales"
+                }
+              },
+              "queryRef": "_Measures.Total Sales",
+              "nativeQueryRef": "Total Sales"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Total Population"
+                }
+              },
+              "queryRef": "_Measures.Total Population",
+              "nativeQueryRef": "Total Population"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Shipping Miles"
+                }
+              },
+              "queryRef": "_Measures.Shipping Miles",
+              "nativeQueryRef": "Shipping Miles"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "labels": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "bubbleLayer": [
+        {
+          "properties": {
+            "clusteringEnabled": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "barChart": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "thickness": {
+              "expr": {
+                "Literal": {
+                  "Value": "2L"
+                }
+              }
+            },
+            "barHeight": {
+              "expr": {
+                "Literal": {
+                  "Value": "2L"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "categoryLabels": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "visualTooltip": [
+        {
+          "properties": {
+            "type": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Default'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "divider": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Sales Opportunities'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "529252be08a463fe5a43",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "DIM_Locations"
+              }
+            },
+            "Property": "State Name"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "5d272c02715e70eefe8e",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Sales Opportunity"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "539e0c874395c358264b",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "DIM_Locations"
+              }
+            },
+            "Property": "County"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "23c9634bc1489413f667",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "FCT_Sales"
+              }
+            },
+            "Property": "Region"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "19fb177f033fac7c2702",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Total Population"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "54a1bf163089cf91c2ac",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Total Sales"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "eaf69668b73c1f323667",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Shipping Miles"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

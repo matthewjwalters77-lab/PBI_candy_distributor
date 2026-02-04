@@ -1,0 +1,83 @@
+cultureInfo en-US
+
+	linguisticMetadata =
+			{
+			  "Version": "2.0.0",
+			  "Language": "en-US",
+			  "Entities": {
+			    "table_metrics.metric_formatted": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Metrics",
+			          "ConceptualProperty": "Metric Formatted"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Metric": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "calendar.quarter_name": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Calendar",
+			          "ConceptualProperty": "Quarter Name"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Quarter": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "calendar.month_name_short": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Calendar",
+			          "ConceptualProperty": "Month Name Short"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Month": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "table_metrics.column_kpi_status": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Metrics",
+			          "ConceptualProperty": "_KPI Status"
+			        }
+			      },
+			      "State": "Generated"
+			    }
+			  }
+			}
+		contentType: json
+
