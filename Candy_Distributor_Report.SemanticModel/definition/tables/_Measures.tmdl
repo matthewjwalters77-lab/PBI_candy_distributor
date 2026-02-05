@@ -1,6 +1,7 @@
 table _Measures
 	lineageTag: 05b3b086-7772-4fb3-81f2-56c47603158d
 
+	/// Expenses associated with production.
 	measure 'Production Costs' = CALCULATE( SUM( FCT_Sales[Cost] ) )
 		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
 		displayFolder: Financial
@@ -8,6 +9,7 @@ table _Measures
 
 		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
 
+	/// Difference of Revenue and COGS.
 	measure 'Gross Profit' = [Revenue] - [COGS]
 		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
 		displayFolder: Financial
@@ -15,6 +17,7 @@ table _Measures
 
 		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
 
+	/// Sum of sales and revenue accrued.
 	measure Revenue = [Total Sales] + [Revenue Accrued]
 		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
 		displayFolder: Financial
@@ -22,6 +25,7 @@ table _Measures
 
 		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
 
+	/// Ratio of Gross Profit to Revenue.
 	measure 'Gross Margin' =
 			
 			VAR _sales = [Revenue]
@@ -31,21 +35,25 @@ table _Measures
 		displayFolder: Financial
 		lineageTag: cea162c4-be81-42cf-9129-46ae0e6e887a
 
+	/// Count of distinct Order ID's from transactions.
 	measure Orders = CALCULATE( DISTINCTCOUNT( FCT_Sales[Order ID] ) )
 		formatString: #,0
 		displayFolder: Operations
 		lineageTag: 0d239b5a-0b37-4dba-815d-4ca71c83f7fb
 
+	/// Count of unique customer ID's in transactions.
 	measure 'Customer Count' = CALCULATE( DISTINCTCOUNT( FCT_Sales[Customer ID] ) )
 		formatString: #,0
 		displayFolder: Product Management
 		lineageTag: 858d3484-63cf-4840-a9cb-cb5a5d5af833
 
+	/// Represents the number of units sold and delivered.
 	measure Units = CALCULATE( SUM( FCT_Sales[Units] ) )
 		formatString: #,0
 		displayFolder: Operations
 		lineageTag: 82005aed-66e1-4def-b7db-bc7586b8b21c
 
+	/// Represents the Haversine Miles distance from factory for orders.
 	measure 'Shipping Miles' =
 			
 			VAR _tbl =
@@ -69,12 +77,14 @@ table _Measures
 		displayFolder: Operations
 		lineageTag: 7a9289ee-91ce-4337-b8ba-339b49c80a00
 
+	/// Expenses associated with shipping.
 	measure 'Shipping Costs' = CALCULATE( SUM( FCT_Sales[Shipping Cost] ) )
 		displayFolder: Financial
 		lineageTag: 63e66cb3-ca0b-4f2a-969f-f6cfd250a420
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	/// Average days difference between order date and delivery date.
 	measure 'Days To Deliver' =
 			
 			DeliverDate(
@@ -104,6 +114,7 @@ table _Measures
 				RETURN
 				    SWITCH ( TRUE (), _ratio < - _tolerance, 1, _ratio > _tolerance, -1, 0 )
 
+	/// Cost of Goods Sold (COGS) is the sum of production and shipping costs.
 	measure COGS = [Production Costs] + [Shipping Costs]
 		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
 		displayFolder: Financial
@@ -111,6 +122,7 @@ table _Measures
 
 		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
 
+	/// COGS expenses per Unit produced and delivered.
 	measure 'COGS / Unit' = DIVIDE( [COGS], [Units] )
 		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
 		displayFolder: Financial
@@ -118,6 +130,7 @@ table _Measures
 
 		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
 
+	/// Revenue per unit ordered and delivered.
 	measure 'Revenue / Unit' = DIVIDE( [Revenue], [Units] )
 		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
 		displayFolder: Financial
@@ -125,11 +138,13 @@ table _Measures
 
 		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
 
+	/// Ratio of total shipping miles to total units.
 	measure 'Miles / Unit' = DIVIDE( [Shipping Miles], [Units] )
 		formatString: #,0.0
 		displayFolder: Operations
 		lineageTag: 3e659554-17fd-4358-ae1f-c2ca9bbdaa49
 
+	/// Gross Profit earned per Unit produced and delivered.
 	measure 'GP / Unit' = DIVIDE( [Gross Profit], [Units] )
 		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
 		displayFolder: Financial
@@ -137,11 +152,13 @@ table _Measures
 
 		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
 
+	/// Ration of total shipping miles to total orders.
 	measure 'Miles / Order' = DIVIDE( [Shipping Miles], [Orders] )
 		formatString: #,0.0
 		displayFolder: Operations
 		lineageTag: f77bf34b-096c-483a-abcd-7f8d39a39d64
 
+	/// COGS expense per order.
 	measure 'COGS / Order' = DIVIDE( [COGS], [Orders] )
 		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
 		displayFolder: Financial
@@ -149,6 +166,7 @@ table _Measures
 
 		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
 
+	/// Revenue per order produced and delivered.
 	measure 'Revenue / Order' = DIVIDE( [Revenue], [Orders] )
 		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
 		displayFolder: Financial
@@ -156,6 +174,7 @@ table _Measures
 
 		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
 
+	/// Gross Profit earned per Order produced and delivered.
 	measure 'GP / Order' = DIVIDE( [Gross Profit], [Orders] )
 		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
 		displayFolder: Financial
@@ -163,11 +182,13 @@ table _Measures
 
 		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
 
+	/// Represents the average number of units per order.
 	measure 'Units / Order' = DIVIDE( [Units], [Orders] )
 		formatString: #,0.0
 		displayFolder: Operations
 		lineageTag: b0b7a7c3-5fda-4f0f-93d0-a94ffe721f15
 
+	/// Average days difference between order date and ship date.
 	measure 'Days To Ship' =
 			
 			ShipDate(
@@ -197,6 +218,7 @@ table _Measures
 				RETURN
 				    SWITCH ( TRUE (), _ratio < - _tolerance, 1, _ratio > _tolerance, -1, 0 )
 
+	/// Average days difference between ship date and delivery date.
 	measure 'Days In-Transit' =
 			
 			DeliverDate(
@@ -227,6 +249,7 @@ table _Measures
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	/// Production expenses per Order produced and delivered.
 	measure 'Production Cost / Order' = ShipDate( DIVIDE( [Production Costs], [Orders] ) )
 		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
 		displayFolder: Operations
@@ -248,6 +271,7 @@ table _Measures
 
 		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
 
+	/// Shipping expenses per Order produced and delivered.
 	measure 'Shipping Cost / Order' = DeliverDate( DIVIDE( [Shipping Costs], [Orders] ) )
 		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
 		displayFolder: Operations
@@ -269,6 +293,7 @@ table _Measures
 
 		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
 
+	/// Weighted average of population density.
 	measure 'Population Density' =
 			
 			VAR _area =
@@ -288,11 +313,13 @@ table _Measures
 		displayFolder: Product Management
 		lineageTag: 53a76c25-238c-43f0-a547-ec5e74e714f2
 
+	/// Sum of population for locations.
 	measure 'Total Population' = CALCULATE( SUM( DIM_Locations[Population] ) )
 		formatString: #,0
 		displayFolder: Product Management
 		lineageTag: ea7d0e28-06f2-4e79-a9e1-8a7a0a4be9dd
 
+	/// Represents concentration of sales for zip codes that have sales.
 	measure 'Sales Density (100k)' =
 			
 			CALCULATE(
@@ -305,6 +332,7 @@ table _Measures
 
 		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
 
+	/// Represents the possible improvement in sales if zip codes with below average sales density was improved to the average.
 	measure 'Sales Opportunity' =
 			
 			VAR _zipswithsales =
@@ -338,6 +366,7 @@ table _Measures
 
 		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
 
+	/// Income associated with sales.
 	measure 'Total Sales' = CALCULATE( SUM( FCT_Sales[Sales] ) )
 		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
 		displayFolder: Financial
@@ -345,6 +374,7 @@ table _Measures
 
 		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
 
+	/// Ratio of selected metric to Revenue.
 	measure 'Pct of Revenue' =
 			
 			DIVIDE (
@@ -358,6 +388,7 @@ table _Measures
 		displayFolder: Financial
 		lineageTag: ca23ad81-62a1-43d2-bb6d-115e4c7f5540
 
+	/// Represents the revenue reversal of previous month and delivered sales not invoiced for the current month.
 	measure 'Revenue Accrued' =
 			
 			VAR _maxdate =
@@ -378,6 +409,7 @@ table _Measures
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	/// Expenses associated with Sales, General, and Administration.
 	measure SG&A = CALCULATE( [Revenue] ) * 0.1
 		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
 		displayFolder: Financial
@@ -385,6 +417,7 @@ table _Measures
 
 		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
 
+	/// Expenses associated with marketing.
 	measure 'Marketing Costs' = CALCULATE( [Revenue] ) * 0.025
 		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
 		displayFolder: Financial
@@ -392,6 +425,7 @@ table _Measures
 
 		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
 
+	/// Earnings Before Interest and Taxes (EBIT) equals Gross Profit  minus the sum of SG&A, Depreciation, and Marketing expenses.
 	measure EBIT = [Gross Profit] - [SG&A] - [Depreciation] - [Marketing Costs]
 		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
 		displayFolder: Financial
@@ -399,6 +433,7 @@ table _Measures
 
 		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
 
+	/// Represents depreciation expense and is calculated at $0.15 USD for each unit produced and delivered.
 	measure Depreciation = [Units] * 0.15
 		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
 		displayFolder: Financial
@@ -406,17 +441,20 @@ table _Measures
 
 		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
 
+	/// Sum of expenses for SG&A, Marketing, and Depreciation.
 	measure 'Operating Expenses' = [SG&A] + [Marketing Costs] + [Depreciation]
 		displayFolder: Financial
 		lineageTag: 80702399-28ec-4165-a9aa-b437bf969d18
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	/// Ratio of EBIT to Revenue.
 	measure 'EBIT %' = DIVIDE( [EBIT], [Revenue] )
 		formatString: 0.00%;-0.00%;0.00%
 		displayFolder: Financial
 		lineageTag: 459c603e-94c3-4eab-99a7-dd6092b81b7e
 
+	/// COGS expense per order for operations, which uses the ship date for production and delivery date for shipping expense.
 	measure 'COGS / Order (Ops)' =
 			
 			[Production Cost / Order] + [Shipping Cost / Order]

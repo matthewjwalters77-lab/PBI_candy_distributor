@@ -1,6 +1,7 @@
 table _Metrics
 	lineageTag: 38e10cb0-3089-491d-bf5f-17d7fc52a660
 
+	/// Measure that is filtered by the Metric field in the _Metrics table. Metrics are limited to P&L items.
 	measure KPI = [KPI Measure]
 		displayFolder: _Measures
 		lineageTag: b658f670-5f1f-4a17-bdb9-4b42d932de45
@@ -40,6 +41,7 @@ table _Metrics
 
 		formatStringDefinition = COALESCE( SELECTEDVALUE( _Metrics[Format String] ), FIRSTNONBLANK( _Metrics[Format String] , 0 ) )
 
+	/// KPI value for the previous year.
 	measure 'KPI PY' =
 			
 			VAR _year =
@@ -54,6 +56,7 @@ table _Metrics
 
 		formatStringDefinition = SELECTEDVALUE( _Metrics[Format String] )
 
+	/// Measure for providing the title of a visualization that uses the KPI measure.
 	measure 'KPI Metric Title' =
 			
 			IF( ISFILTERED( _Metrics[Metric] ) || ISFILTERED( _Metrics[Metric Formatted] ),
@@ -65,12 +68,14 @@ table _Metrics
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	/// Measure to display the text of the selected metric from the _Metrics table.
 	measure 'Metric Description' = IF ( HASONEVALUE ( _Metrics[Metric] ), SELECTEDVALUE ( _Metrics[Description] ) )
 		displayFolder: Cosmetic
 		lineageTag: c36033eb-b032-44f5-aae5-b5f36a10fbea
 
 		annotation PBI_FormatHint = {"isText":true}
 
+	/// Uses the KPI measure with modifications for expenses to be negative and income to remain positive.
 	measure 'KPI (Favorable )' =
 			
 			VAR _measure = [KPI Measure]
@@ -81,6 +86,7 @@ table _Metrics
 
 		formatStringDefinition = SELECTEDVALUE( _Metrics[Format String] )
 
+	/// KPI value for the previous year with income as positive and expenses as negative.
 	measure 'KPI PY (Favorable)' =
 			
 			[KPI PY]
@@ -90,6 +96,7 @@ table _Metrics
 
 		formatStringDefinition = SELECTEDVALUE( _Metrics[Format String] )
 
+	/// Measure that all KPI's reference and is the basis for KPI. This measure is to enable further development, if needed, in Power BI and doesn't require Tabular Editor.
 	measure 'KPI Measure' = ```
 			
 			SWITCH (
@@ -117,14 +124,7 @@ table _Metrics
 
 		formatStringDefinition = SELECTEDVALUE( _Metrics[Format String] )
 
-	measure 'KPI Visuals' =
-			
-			IF( ISFILTERED( _Metrics[Metric Formatted] ), [KPI] )
-		displayFolder: Cosmetic
-		lineageTag: ad86707a-1e1e-43fd-b66c-cd9e99584c79
-
-		formatStringDefinition = COALESCE( SELECTEDVALUE( _Metrics[Format String] ), FIRSTNONBLANK( _Metrics[Format String] , 0 ) )
-
+	/// Uses KPI (Favorable) measure and represents the change from the previous year in the metric. Positive results are favorable while negative is unfavorable.
 	measure 'KPI Chg PY' =
 			
 			VAR _kpi = [KPI (Favorable )]
@@ -135,6 +135,7 @@ table _Metrics
 
 		formatStringDefinition = SELECTEDVALUE( _Metrics[Format String] )
 
+	/// Measure for providing the title of a visualization that uses the KPI measure with change from Previous Year (PY) as a calculation.
 	measure 'KPI Metric Chg PY Title' =
 			
 			VAR _title = [KPI Metric Title]
@@ -238,7 +239,7 @@ table _Metrics
 		mode: import
 		source =
 				let
-				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("fZBND4IwDIb/yrKEmybGg3fUuXAQyIbGBDksuOAiYWQDf7/zY8oQuKztk77t+qYpJOiIwgOCs052oFvzJqrlvwCzWQopK7k2BQBzAGzx7t6xUvfbCb8DP89Vy0orctG4dBNhavJPcD5k2199sZKXNm+ErMBG6ub7uQHuLnOm0Kuoa1EV7ow/OjEBk4hSEJNoFySG9cpRQ7GSWoM9U4Wo7Noe84aVUYxOJv+EcYMoPreLxXLlf6/qgImDzP4bb8z1VtcFE7otrxXPBXtab6U9NqE25xA/CUL8824AjdqJ1kHi2a22GDIwewA=", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Metric = _t, #"Metric Formatted" = _t, Units = _t, Summary = _t, #"Favorable Positive" = _t, Description = _t]),
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("nVRBbtswEPzKwkCABFCDIIfe3VgRfGhkSE5RwMlBFVcxEZkUSMpNf98lKcqSJbhBL2F2sZqZHQ692y2y+Ef89BwvosF/z/mK/m5Vi6cjbw8gK9BFjRp+/QEujpKXCKwwGEGj8Mhlq+EghdkDVahoNIJCMGBYc6qRuUpIEz5mHVwlFZg9QtkqhcJ4kNvFa7Rb5HaA6AG+AITC63ssav1JgR4rwyMsy1K1RR0Qx61LuHYl0WK/mu2dbT3e1QsZbTu/54tw6h7SJCe67hhdQVD0ILWxvImUTEMuawbXdv4GuHbA2mttlGRtabgU1gi9541zwQm0VcPFG5QE5ozqJA+M2py+t5S9/zP9sWXhzCc68KNBof3N9IK6Kw6KRlyT7kWmfqshz3SxJEvzHDZZ+rje0sdn5VzsV7yq6DoFBYlorNlQKXmwwbFx6GCV1Bq+F+qNi6D/rHc1Qc4KMsbdppskbytuwMgA7ZDTTfyTZrtjNhSdA/3iNmR58tLe3d1/XUZWwTsassa/xRVSaEtuuUVnf5jtnR80Lpo+prRxjyBBgSo8/CU7cMG1UQO6Xk+gGzY+R1doLe0K9KJ+c3p3PYJnGK4YSM56/8fDBiBuZxpAo2/DTWXL7fopOeVppvXviKUNervoJyYOSq7TJv648ckbxsVTx9/W26uwaSguBK6joNcyCR0Bvv4F", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Metric = _t, #"Metric Formatted" = _t, Units = _t, Summary = _t, #"Favorable Positive" = _t, Description = _t]),
 				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Summary", type logical}, {"Favorable Positive", type logical}}),
 				    #"Added Index" = Table.AddIndexColumn(#"Changed Type", "Metric_Ordinal", 1, 1, Int64.Type),
 				    #"Merged Queries" = Table.NestedJoin(#"Added Index", {"Units"}, format_metrics, {"Units"}, "format_metrics", JoinKind.LeftOuter),
