@@ -4,6 +4,7 @@ table DIM_Locations
 	column lat
 		dataType: double
 		lineageTag: 8bb5213b-f279-4776-9b95-5c71d4496364
+		dataCategory: Latitude
 		summarizeBy: none
 		sourceColumn: lat
 
@@ -16,6 +17,7 @@ table DIM_Locations
 	column lng
 		dataType: double
 		lineageTag: 83d42281-3630-455b-a82d-3fefbf20265c
+		dataCategory: Longitude
 		summarizeBy: none
 		sourceColumn: lng
 
@@ -171,6 +173,7 @@ table DIM_Locations
 
 	column Population
 		dataType: int64
+		isHidden
 		formatString: 0
 		lineageTag: a5300528-115d-42cb-a637-2961dc3c0a10
 		summarizeBy: none

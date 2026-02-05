@@ -1,0 +1,83 @@
+table Info_Measures
+	lineageTag: 731f8a26-bb96-4167-998a-3f3c61381108
+
+	measure DisplayDAX =
+			
+			VAR _pre = "<pre style='font-family: Consolas;'>"
+			VAR _name =
+			    SELECTEDVALUE ( Info_Measures[Measure Name] )
+			VAR _dax =
+			    SELECTEDVALUE ( Info_Measures[Expression] )
+			VAR _post = "</pre>"
+			RETURN
+			    _pre
+			        & IF (
+			            NOT ISBLANK ( _name ),
+			            _name & " =" & _dax,
+			            "SELECT A DAX MEASURE TO SEE EXPRESSION."
+			        ) & _post
+		lineageTag: 434be0a0-438c-4a75-8b53-c0c908d7abac
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column 'Measure Name'
+		dataType: string
+		lineageTag: 37c414cc-b299-459b-8191-0bd0daddf49c
+		summarizeBy: none
+		sourceColumn: Measure Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Measure Description'
+		dataType: string
+		lineageTag: af613e76-6c58-485e-bc49-8a9c2ebfdf1a
+		summarizeBy: none
+		sourceColumn: Measure Description
+
+		annotation SummarizationSetBy = Automatic
+
+	column Expression
+		dataType: string
+		lineageTag: 35ced3e5-b085-415c-8538-f537547a4a83
+		summarizeBy: none
+		sourceColumn: Expression
+
+		annotation SummarizationSetBy = Automatic
+
+	column FormatString
+		dataType: string
+		lineageTag: aeddc9a8-dd89-4551-a001-e83faaf09848
+		summarizeBy: none
+		sourceColumn: FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+	column DisplayFolder
+		dataType: string
+		lineageTag: 6a909cb8-cd40-4b11-87ea-dde23d251c4a
+		summarizeBy: none
+		sourceColumn: DisplayFolder
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Info_Measures = m
+		mode: import
+		source =
+				let
+				    Source = source_tables,
+				    #"Filtered Rows" = Table.SelectRows(Source, each [Table] = "Measures"),
+				    Table = #"Filtered Rows"{0}[Table],
+				    URL = pDataFileLocation & Table & ".csv",
+				    URLContents = Web.Contents(URL),
+				    CSVExtract = Csv.Document(URLContents),
+				    #"Promoted Headers" = Table.PromoteHeaders(CSVExtract, [PromoteAllScalars=true]),
+				    #"Removed Other Columns" = Table.SelectColumns(#"Promoted Headers",{"Name", "Description", "Expression", "FormatString", "DisplayFolder"}),
+				    #"Filtered Rows1" = Table.SelectRows(#"Removed Other Columns", each ([Name] <> "DisplayDAX")),
+				    #"Renamed Columns" = Table.RenameColumns(#"Filtered Rows1",{{"Name", "Measure Name"}, {"Description", "Measure Description"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

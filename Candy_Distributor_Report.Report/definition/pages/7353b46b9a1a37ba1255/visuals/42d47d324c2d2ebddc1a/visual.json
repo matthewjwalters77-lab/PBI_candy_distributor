@@ -276,20 +276,6 @@
           ]
         },
         "howCreated": "User"
-      },
-      {
-        "name": "4fc65716c49ec29bfab2",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "DIM_Products"
-              }
-            },
-            "Property": "Factory"
-          }
-        },
-        "type": "Categorical"
       }
     ]
   }

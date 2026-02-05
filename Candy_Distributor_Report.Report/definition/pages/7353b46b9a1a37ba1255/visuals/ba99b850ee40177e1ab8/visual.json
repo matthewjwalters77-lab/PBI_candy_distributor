@@ -280,48 +280,6 @@
             }
           ]
         }
-      },
-      {
-        "name": "4d0b5431d666bcc30c45",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Metrics"
-              }
-            },
-            "Property": "_KPI Goal"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "c01d8c40f348c0c4dd7f",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Metrics"
-              }
-            },
-            "Property": "_KPI Status"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "f5d546bddf049b315d9e",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Metrics"
-              }
-            },
-            "Property": "KPI"
-          }
-        },
-        "type": "Advanced"
       }
     ]
   }

@@ -293,62 +293,6 @@
         },
         "type": "Categorical",
         "howCreated": "User"
-      },
-      {
-        "name": "c25c9d30cb2565268a7f",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Metrics"
-              }
-            },
-            "Property": "KPI (Favorable )"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "7516bfe7612ede9973c8",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "FCT_Sales"
-              }
-            },
-            "Property": "Region"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "d5041f524d64b5b7cad3",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "DIM_Products"
-              }
-            },
-            "Property": "Factory"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "559d8821a395ad6f360c",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "DIM_Products"
-              }
-            },
-            "Property": "Product Name"
-          }
-        },
-        "type": "Categorical"
       }
     ]
   }

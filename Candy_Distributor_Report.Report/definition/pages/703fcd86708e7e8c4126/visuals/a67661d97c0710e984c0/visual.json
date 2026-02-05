@@ -5,7 +5,7 @@
     "x": 9.8753117206982548,
     "y": 64.638403990024941,
     "z": 1000,
-    "height": 320.49875311720695,
+    "height": 655.36159600997507,
     "width": 619.45137157107229,
     "tabOrder": 1000
   },
@@ -19,10 +19,150 @@
               {
                 "textRuns": [
                   {
-                    "value": "Candy Distributor Data Model Information",
+                    "value": "Candy Distributor Report Information",
                     "textStyle": {
                       "fontWeight": "bold",
                       "fontSize": "24pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Semantic Model and Report developed for illustrative and educational purposes."
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Source data located in Object Storage."
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Contains synthetic production, shipping, and sales data for a fictitious Candy producer and distributor."
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Semantic Model contains 4 Calculation Groups:",
+                    "textStyle": {
+                      "fontWeight": "bold"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Select Date",
+                    "textStyle": {
+                      "fontWeight": "bold"
+                    }
+                  },
+                  {
+                    "value": " - Modifies the date relationship to the Sales Table and includes Invoice, Order, Ship, and Delivery Date. Default: Invoice Date"
+                  }
+                ],
+                "listType": "ordered"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Select In Process",
+                    "textStyle": {
+                      "fontWeight": "bold"
+                    }
+                  },
+                  {
+                    "value": " - Modifies the scope of calculations in relation to Work-In-Progress (WIP) and includes Base (no modification), Total WIP, In MFG (Manufacturing), and In Transit (enroute to customer). Default: Base"
+                  }
+                ],
+                "listType": "ordered"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Select Period",
+                    "textStyle": {
+                      "fontWeight": "bold"
+                    }
+                  },
+                  {
+                    "value": ": Provides for time intelligence by modifying the scope of dates and includes Base, MTD, QTD, YTD, TTM (Trailing 12 months), PY (Previous Year), Rolling Avg (7Day), Rolling Avg (28Day), Rolling Avg (3Mo), and Rolling Avg (12Mo). Default: Base"
+                  }
+                ],
+                "listType": "ordered"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Select Variance -",
+                    "textStyle": {
+                      "fontWeight": "bold"
+                    }
+                  },
+                  {
+                    "value": " Provides for further time intelligence with a focus on variance and includes Base, MoM, MoM%, YoY, and YoY%. Variance can be combined with Select Period (Ex. YTD and YoY% combined). Default: Base"
+                  }
+                ],
+                "listType": "ordered"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Developed by:  Matthew Walters",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "18pt"
                     }
                   }
                 ]

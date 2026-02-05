@@ -233,20 +233,6 @@
           ]
         },
         "howCreated": "User"
-      },
-      {
-        "name": "cd0ec97fe6d67ef324cd",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Metrics"
-              }
-            },
-            "Property": "KPI Chg PY"
-          }
-        },
-        "type": "Advanced"
       }
     ],
     "filterSortOrder": "Custom"

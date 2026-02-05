@@ -1,0 +1,142 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "0984b4a6b506eda25c24",
+  "position": {
+    "x": 9.8753117206982548,
+    "y": 64.638403990024941,
+    "z": 1000,
+    "height": 654.46384039900249,
+    "width": 619.45137157107229,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Info_Measures"
+                    }
+                  },
+                  "Property": "Measure Name"
+                }
+              },
+              "queryRef": "Info_Measures.Name",
+              "nativeQueryRef": "Measure Name"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Info_Measures"
+                    }
+                  },
+                  "Property": "DisplayFolder"
+                }
+              },
+              "queryRef": "Info_Measures.DisplayFolder",
+              "nativeQueryRef": "DisplayFolder"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Info_Measures"
+                    }
+                  },
+                  "Property": "Measure Description"
+                }
+              },
+              "queryRef": "Info_Measures.Description",
+              "nativeQueryRef": "Description"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "general": [
+        {
+          "properties": {}
+        }
+      ],
+      "values": [
+        {
+          "properties": {}
+        }
+      ],
+      "grid": [
+        {
+          "properties": {
+            "gridVertical": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "317.59559982316387D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Info_Measures.Description"
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "visualHeader": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualTooltip": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "section": {
+              "expr": {
+                "Literal": {
+                  "Value": "'8a2b437d2468d238a154'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
