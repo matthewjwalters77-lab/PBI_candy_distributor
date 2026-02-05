@@ -7,7 +7,7 @@ expression pDataFileLocation = "https://mwalters-data-storage.atl1.cdn.digitaloc
 
 expression source_tables =
 		let
-		    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45Wck7MS6mMd0tMLskvykwtVorVgYkFFOWnlCaXIAsFJ+agKHHJLC4pykwqLcnMz4t3zkkshkiWFldlFgCZsQA=", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Table = _t]),
+		    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45Wck7MS6mMd0tMLskvykwtVorVgYkFFOWnlCaXIAsFJ+agKHHJLC4pykwqLcnMz4t3zkkshkiWFldlFkCYvqlABckwdmJxaRHIgFgA", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Table = _t]),
 		    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Table", type text}})
 		in
 		    #"Changed Type"

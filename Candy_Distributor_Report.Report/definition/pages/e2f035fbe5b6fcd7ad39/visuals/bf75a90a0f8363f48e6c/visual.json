@@ -159,51 +159,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "005407c4389e7c5e6c51",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Calendar"
-              }
-            },
-            "Property": "Year"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "b58949a9c9d40e285ebc",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Shipping Cost / Order"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "0064c21f06a57c188275",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "_Shipping Cost / Order Goal"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

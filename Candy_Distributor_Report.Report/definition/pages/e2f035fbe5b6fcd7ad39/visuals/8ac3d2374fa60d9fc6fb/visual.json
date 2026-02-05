@@ -4,10 +4,10 @@
   "position": {
     "x": 325.42372881355931,
     "y": 174.76459510357816,
-    "z": 6000,
+    "z": 5000,
     "height": 210.92278719397362,
     "width": 304.93408662900185,
-    "tabOrder": 6000
+    "tabOrder": 5000
   },
   "visual": {
     "visualType": "pivotTable",
@@ -199,65 +199,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "54715bf633931b57a552",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Shipping Cost / Order"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "48ddac691c6fe0b07d4c",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "_Shipping Cost / Order Status"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "095e4a89bd61b4000863",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Days In-Transit"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "d969483c90b150d9508d",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "_Days In-Transit Status"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

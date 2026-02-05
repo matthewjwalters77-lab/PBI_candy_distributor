@@ -9,7 +9,7 @@ model Model
 
 annotation __PBI_TimeIntelligenceEnabled = 0
 
-annotation PBI_QueryOrder = ["pDataFileLocation","format_metrics","_Metrics","source_tables","DIM_Factories","DIM_Products","FCT_Sales","DIM_Locations","DIM_Distribution_Class"]
+annotation PBI_QueryOrder = ["pDataFileLocation","format_metrics","_Metrics","source_tables","DIM_Factories","DIM_Products","FCT_Sales","DIM_Locations","DIM_Distribution_Class","Info_Measures"]
 
 annotation PBI_ProTooling = ["TMDLView_Desktop","CalcGroup","DaxQueryView_Desktop","DevMode"]
 
@@ -27,7 +27,7 @@ ref table _Select_In_Process
 ref table _Select_Period
 ref table _Select_Variance
 ref table _Metrics
-ref table _Report_Measures
+ref table Info_Measures
 
 ref cultureInfo en-US
 

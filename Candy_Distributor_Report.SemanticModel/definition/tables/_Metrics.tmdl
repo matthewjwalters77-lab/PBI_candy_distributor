@@ -2,15 +2,20 @@ table _Metrics
 	lineageTag: 38e10cb0-3089-491d-bf5f-17d7fc52a660
 
 	/// Measure that is filtered by the Metric field in the _Metrics table. Metrics are limited to P&L items.
-	measure KPI = [KPI Measure]
+	measure KPI =
+			
+			[KPI Measure]
 		displayFolder: _Measures
 		lineageTag: b658f670-5f1f-4a17-bdb9-4b42d932de45
 
 		kpi
-			targetExpression = [KPI PY]
+			targetExpression =
+				
+				[KPI PY]
 			targetFormatString: $ #,##0.00
 			statusGraphic: Road Signs
 			statusExpression =
+				
 				VAR _tolerance = 0.01
 				VAR _direction =
 				    IF ( SELECTEDVALUE ( _Metrics[Favorable Positive] ) = TRUE (), 1, -1 )
@@ -25,6 +30,7 @@ table _Metrics
 				    )
 			trendGraphic: Standard Arrow
 			trendExpression =
+				
 				VAR _tolerance = 0.01
 				VAR _direction =
 				    IF ( SELECTEDVALUE ( _Metrics[Favorable Positive] ) = TRUE (), 1, -1 )
@@ -59,9 +65,10 @@ table _Metrics
 	/// Measure for providing the title of a visualization that uses the KPI measure.
 	measure 'KPI Metric Title' =
 			
-			IF( ISFILTERED( _Metrics[Metric] ) || ISFILTERED( _Metrics[Metric Formatted] ),
-			SELECTEDVALUE ( _Metrics[Metric] ),
-			"Please select a metric or category"
+			IF (
+			    ISFILTERED ( _Metrics[Metric] ) || ISFILTERED ( _Metrics[Metric Formatted] ),
+			    SELECTEDVALUE ( _Metrics[Metric] ),
+			    "Please select a metric or category"
 			)
 		displayFolder: Cosmetic
 		lineageTag: 48154fa8-0fc3-43a5-accc-fc22c4706f13
@@ -79,8 +86,10 @@ table _Metrics
 	measure 'KPI (Favorable )' =
 			
 			VAR _measure = [KPI Measure]
-			VAR _direction = IF ( SELECTEDVALUE ( _Metrics[Favorable Positive] ) = TRUE (), 1, -1 )
-			RETURN IF( NOT ISBLANK( _measure ), _measure * _direction )
+			VAR _direction =
+			    IF ( SELECTEDVALUE ( _Metrics[Favorable Positive] ) = TRUE (), 1, -1 )
+			RETURN
+			    IF ( NOT ISBLANK ( _measure ), _measure * _direction )
 		displayFolder: _Measures
 		lineageTag: 29bbbb16-ed33-4c69-8fe4-d9350ca52595
 
@@ -97,39 +106,44 @@ table _Metrics
 		formatStringDefinition = SELECTEDVALUE( _Metrics[Format String] )
 
 	/// Measure that all KPI's reference and is the basis for KPI. This measure is to enable further development, if needed, in Power BI and doesn't require Tabular Editor.
-	measure 'KPI Measure' = ```
+	measure 'KPI Measure' =
 			
 			SWITCH (
-			    SELECTEDVALUE( _Metrics[Metric] ),
-			    "REVENUE", InvoiceDate ( [Total Sales] ) + [Revenue Accrued], 
+			    SELECTEDVALUE ( _Metrics[Metric] ),
+			    "REVENUE", InvoiceDate ( [Total Sales] ) + [Revenue Accrued],
 			    "Sales", InvoiceDate ( [Total Sales] ),
 			    "Rev Accrual", [Revenue Accrued],
 			    "COGS", ShipDate ( [Production Costs] ) + DeliverDate ( [Shipping Costs] ),
 			    "Production Costs", ShipDate ( [Production Costs] ),
 			    "Shipping Costs", DeliverDate ( [Shipping Costs] ),
-			    "GROSS PROFIT",                             InvoiceDate ( [Total Sales] ) + [Revenue Accrued]
+			    "GROSS PROFIT",
+			        InvoiceDate ( [Total Sales] ) + [Revenue Accrued]
 			            - ShipDate ( [Production Costs] )
 			            - DeliverDate ( [Shipping Costs] ),
 			    "Gross Margin", [Gross Margin],
-			    "OPEX", [SG&A] + [Marketing Costs] + [Depreciation],
+			    "OPEX",
+			        [SG&A] + [Marketing Costs] + [Depreciation],
 			    "SG&A", [SG&A],
 			    "Marketing", [Marketing Costs],
 			    "Depreciation", [Depreciation],
 			    "OPERATING PROFIT", [EBIT],
 			    "EBIT%", [EBIT %]
 			)
-			```
+		isHidden
 		displayFolder: _Measures
 		lineageTag: 49feee0b-622f-404f-bc65-bed2301c3c96
 
 		formatStringDefinition = SELECTEDVALUE( _Metrics[Format String] )
+
+		changedProperty = IsHidden
 
 	/// Uses KPI (Favorable) measure and represents the change from the previous year in the metric. Positive results are favorable while negative is unfavorable.
 	measure 'KPI Chg PY' =
 			
 			VAR _kpi = [KPI (Favorable )]
 			VAR _kpipy = [KPI PY (Favorable)]
-			RETURN IF( NOT ISBLANK( _kpi ) && NOT ISBLANK( _kpipy ), _kpi - _kpipy )
+			RETURN
+			    IF ( NOT ISBLANK ( _kpi ) && NOT ISBLANK ( _kpipy ), _kpi - _kpipy )
 		displayFolder: _Measures
 		lineageTag: 84537e9b-1b44-40bd-96b3-2bbbd01511a8
 
@@ -138,8 +152,7 @@ table _Metrics
 	/// Measure for providing the title of a visualization that uses the KPI measure with change from Previous Year (PY) as a calculation.
 	measure 'KPI Metric Chg PY Title' =
 			
-			VAR _title = [KPI Metric Title]
-			RETURN _title & " Chg from PY"
+			VAR _title = [KPI Metric Title] RETURN _title & " Chg from PY"
 		displayFolder: Cosmetic
 		lineageTag: 97069ef0-803e-4daa-8fe8-7785386bd6f9
 
@@ -190,7 +203,6 @@ table _Metrics
 
 	column Description
 		dataType: string
-		isHidden
 		lineageTag: 1307bab9-3435-49fa-bc09-d4b882ed0815
 		summarizeBy: none
 		sourceColumn: Description
@@ -215,7 +227,6 @@ table _Metrics
 
 	column 'Format String'
 		dataType: string
-		isHidden
 		lineageTag: 90ef10ed-dc36-472d-8f1c-33890e265107
 		summarizeBy: none
 		sourceColumn: Format String
@@ -239,13 +250,16 @@ table _Metrics
 		mode: import
 		source =
 				let
-				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("nVRBbtswEPzKwkCABFCDIIfe3VgRfGhkSE5RwMlBFVcxEZkUSMpNf98lKcqSJbhBL2F2sZqZHQ692y2y+Ef89BwvosF/z/mK/m5Vi6cjbw8gK9BFjRp+/QEujpKXCKwwGEGj8Mhlq+EghdkDVahoNIJCMGBYc6qRuUpIEz5mHVwlFZg9QtkqhcJ4kNvFa7Rb5HaA6AG+AITC63ssav1JgR4rwyMsy1K1RR0Qx61LuHYl0WK/mu2dbT3e1QsZbTu/54tw6h7SJCe67hhdQVD0ILWxvImUTEMuawbXdv4GuHbA2mttlGRtabgU1gi9541zwQm0VcPFG5QE5ozqJA+M2py+t5S9/zP9sWXhzCc68KNBof3N9IK6Kw6KRlyT7kWmfqshz3SxJEvzHDZZ+rje0sdn5VzsV7yq6DoFBYlorNlQKXmwwbFx6GCV1Bq+F+qNi6D/rHc1Qc4KMsbdppskbytuwMgA7ZDTTfyTZrtjNhSdA/3iNmR58tLe3d1/XUZWwTsassa/xRVSaEtuuUVnf5jtnR80Lpo+prRxjyBBgSo8/CU7cMG1UQO6Xk+gGzY+R1doLe0K9KJ+c3p3PYJnGK4YSM56/8fDBiBuZxpAo2/DTWXL7fopOeVppvXviKUNervoJyYOSq7TJv648ckbxsVTx9/W26uwaSguBK6joNcyCR0Bvv4F", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Metric = _t, #"Metric Formatted" = _t, Units = _t, Summary = _t, #"Favorable Positive" = _t, Description = _t]),
-				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Summary", type logical}, {"Favorable Positive", type logical}}),
-				    #"Added Index" = Table.AddIndexColumn(#"Changed Type", "Metric_Ordinal", 1, 1, Int64.Type),
-				    #"Merged Queries" = Table.NestedJoin(#"Added Index", {"Units"}, format_metrics, {"Units"}, "format_metrics", JoinKind.LeftOuter),
-				    #"Expanded format_metrics" = Table.ExpandTableColumn(#"Merged Queries", "format_metrics", {"Format String"}, {"Format String"})
+				    Source = source_tables,
+				    #"Filtered Rows" = Table.SelectRows(Source, each [Table] = "Metrics"),
+				    Table = #"Filtered Rows"{0}[Table],
+				    URL = pDataFileLocation & Table & ".csv",
+				    URLContents = Web.Contents(URL),
+				    CSVExtract = Csv.Document(URLContents),
+				    #"Promoted Headers" = Table.PromoteHeaders(CSVExtract, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Metric_Ordinal", Int64.Type}, {"Summary", type logical}, {"Favorable Positive", type logical}})
 				in
-				    #"Expanded format_metrics"
+				    #"Changed Type"
 
 	annotation PBI_NavigationStepName = Navigation
 

@@ -374,11 +374,11 @@ table Calendar
 			lineageTag: a09599af-6a63-45f1-810e-cbe2d1538b0c
 			column: Year
 
-		level 'Quarter Name'
+		level Quarter
 			lineageTag: 569c636e-8c66-49a2-a260-8c192750f3a6
 			column: 'Quarter Name'
 
-		level 'Month Name Short'
+		level Month
 			lineageTag: c06778b1-cc1e-416b-b208-da6aba0559d5
 			column: 'Month Name Short'
 

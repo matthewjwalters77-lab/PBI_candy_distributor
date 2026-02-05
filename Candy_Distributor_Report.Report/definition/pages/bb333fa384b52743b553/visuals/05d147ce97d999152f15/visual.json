@@ -1,0 +1,65 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "05d147ce97d999152f15",
+  "position": {
+    "x": 10.531039640987286,
+    "y": 65.100972326103218,
+    "z": 1000,
+    "height": 342.73747195213167,
+    "width": 619.41660433807033,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Metric Definitions Page",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "24pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Metrics are selectable measures for use in financial reporting. Each metric calls a measure and may have specific modifications to the base measure."
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Ex: The metric for Shipping Costs references the Shipping Costs measure but uses the delivered date for financial reporting. The measure for Shipping Costs can be used with different reference dates, such as order date, ship date, delivered date, or invoice date. The metric is fixed to the delivered date."
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
