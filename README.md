@@ -1,17 +1,109 @@
-![Logo](https://github.com/user-attachments/assets/055ef9ab-58d6-4d7a-8419-0c53365c6a73)
-<svg width="398" height="163" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" overflow="hidden"><g transform="translate(-256 -335)"><g><g><g><path d="M621.962 435.484 606.483 496.72 562.576 496.72 543.511 418.533C542.944 416.306 542.303 410.756 541.623 401.884L541.245 401.884C540.264 409.737 539.358 415.286 538.452 418.533L517.876 496.72 471.364 496.72 438.82 360.242 484.125 360.242 495.488 440.279C495.677 441.298 495.979 444.243 496.357 449.151L496.923 457.117 497.489 457.117C497.64 455.456 498.018 452.624 498.66 448.623 499.264 444.658 499.905 441.676 500.472 439.675L521.425 360.242 566.842 360.242 584.284 440.845 585.53 448.962 586.474 456.928 586.889 456.928 587.154 453.568 588.399 440.279 589.117 435.484 621.962 435.484ZM382.492 496.72 382.492 421.516C382.492 414.418 382.719 406.641 383.172 398.146L383.474 391.841 382.304 391.841C380.265 402.639 378.717 410.076 377.622 414.229L357.424 496.72 318.576 496.72 297.434 415.173C296.868 413.134 295.357 405.357 292.941 391.841L291.809 391.841C292.677 413.285 293.13 426.688 293.13 432.049L293.13 496.72 257.038 496.72 257.038 360.242 318.953 360.242 337.641 434.05C338.057 435.56 338.661 438.693 339.416 443.375 340.133 448.056 340.586 451.681 340.775 454.248L341.379 454.248C342.058 448.434 343.191 441.563 344.701 433.672L362.143 360.242 423.266 360.242 423.266 496.72 382.492 496.72Z" fill="#777777" fill-rule="evenodd"/></g></g></g><g><g><g><path d="M592.5 384C592.5 382.619 593.619 381.5 595 381.5L605 381.5C606.381 381.5 607.5 382.619 607.5 384L607.5 424C607.5 425.381 606.381 426.5 605 426.5L595 426.5C593.619 426.5 592.5 425.381 592.5 424Z" stroke="#777777" stroke-width="0.666667" stroke-miterlimit="8" fill="#AAAAAA" fill-rule="evenodd"/><path d="M614.5 362.167C614.5 360.694 615.694 359.5 617.167 359.5L627.833 359.5C629.306 359.5 630.5 360.694 630.5 362.167L630.5 424.833C630.5 426.306 629.306 427.5 627.833 427.5L617.167 427.5C615.694 427.5 614.5 426.306 614.5 424.833Z" stroke="#777777" stroke-width="0.666667" stroke-miterlimit="8" fill="#AAAAAA" fill-rule="evenodd"/><path d="M636.5 339.167C636.5 337.694 637.694 336.5 639.167 336.5L649.833 336.5C651.306 336.5 652.5 337.694 652.5 339.167L652.5 423.833C652.5 425.306 651.306 426.5 649.833 426.5L639.167 426.5C637.694 426.5 636.5 425.306 636.5 423.833Z" stroke="#777777" stroke-width="0.666667" stroke-miterlimit="8" fill="#AAAAAA" fill-rule="evenodd"/></g></g></g></g></svg>
-# PBI_candy_distributor
-Repository for the Power BI resources need to ingest, report, and analyze fictitious candy distributor data.
+![Logo](https://github.com/user-attachments/assets/055ef9ab-58d6-4d7a-8419-0c53365c6a73)  
 
-# Reports
+[Matthew Walters LinkedIn](https://www.linkedin.com/in/matthew-walters-a66a4322)
 
-[Candy Financials](https://app.powerbi.com/view?r=eyJrIjoiNGEzNzYyMWQtZjhmYy00ODAwLThlYWItNGJkZTExMTM5OTM5IiwidCI6ImNlMTg3NGVjLWMwMjktNGY3YS1iMDMyLTkwNGJhMDU4YWE2ZCIsImMiOjN9)
+# Candy Production and Shipping Report
 
-[Candy Operations Summary](https://app.powerbi.com/view?r=eyJrIjoiODgzNDIzNTUtYzE0ZC00MzY3LThkNDQtZjRmNmFhYTUzOTk2IiwidCI6ImNlMTg3NGVjLWMwMjktNGY3YS1iMDMyLTkwNGJhMDU4YWE2ZCIsImMiOjN9)
+## Problem Statement  
+### Stakeholders lacked efficient and consistent visibility into financial and operational performance and were not able to identify sales opportunities by product or geography.  
 
-[Candy Production](https://app.powerbi.com/view?r=eyJrIjoiY2Q5N2IxODYtMmY4Yi00YmNhLWFlNzUtZDk0Njk5NDM4MzViIiwidCI6ImNlMTg3NGVjLWMwMjktNGY3YS1iMDMyLTkwNGJhMDU4YWE2ZCIsImMiOjN9)
+## Solution  
+### Developed an interactive dashboard that provides:  
+- Visibility into sales opportunities by geography (national, state, county, or zip) and by product (division, factory, or product)  
+- Standardized, efficient, and near real-time reporting tailored for each functional area  
+### Semantic Model also includes:  
+> Not available in the publish to web report  
+- Work In Progress (WIP) capabilites for improved managerial accounting  
+- Flexible Time and Variance Intelligence capabilities for all measures  
 
-[Candy Shipping](https://app.powerbi.com/view?r=eyJrIjoiNDFhZGE2NTEtNWQ2YS00YzYzLTg2ODMtZGJlOTE1NmMzYjdlIiwidCI6ImNlMTg3NGVjLWMwMjktNGY3YS1iMDMyLTkwNGJhMDU4YWE2ZCIsImMiOjN9)
 
-[Candy Product Management](https://app.powerbi.com/view?r=eyJrIjoiZjBmZDk1ZDEtY2MzNy00YjkzLTk4YzgtYmZjOTRjYjMxZmJjIiwidCI6ImNlMTg3NGVjLWMwMjktNGY3YS1iMDMyLTkwNGJhMDU4YWE2ZCIsImMiOjN9)
+## [Live Link](https://app.powerbi.com/view?r=eyJrIjoiOGYyYzEzOWYtNTdiOS00YzgyLTkwYTEtOTQyMzUxOTk4ZDcxIiwidCI6ImNlMTg3NGVjLWMwMjktNGY3YS1iMDMyLTkwNGJhMDU4YWE2ZCIsImMiOjN9)  
 
+![Financial Summary](https://mwalters-data-storage.atl1.cdn.digitaloceanspaces.com/US_Candy_Distributor/FinancialSummary.png)  
+
+## Business Insight and Impacts  
+- Discovered that Gross Margin and EBIT% were both down ~3% between 2023 and 2025, but Gross Profit and EBIT dollars increased ~50% and ~45% respectively over the same time period. Primary driver was disproportionate increases in shipping expenses relative to sales.  
+- Identified the highest concentration of sales opportunities to be in the Northeast, Great Lakes, Florida, Texas, and California.  
+
+![Geographical Sales Opportunities](https://mwalters-data-storage.atl1.cdn.digitaloceanspaces.com/US_Candy_Distributor/Region_Sales_Opportunities.png)  
+
+## Interactivity  
+### Financial Summary Page  
+Select the metric that will be calculated in matrix.  
+
+![Financial Metric Selection](https://mwalters-data-storage.atl1.cdn.digitaloceanspaces.com/US_Candy_Distributor/metric_selection.gif)  
+
+Hover over the KPI to see a monthly breakdown of performance status and trend for the metric. Status represents favorable or unfavorable YoY variance while trend represents the same for MoM.  
+
+![Financial Metric Hover](https://mwalters-data-storage.atl1.cdn.digitaloceanspaces.com/US_Candy_Distributor/metric_hover.gif)  
+
+
+## Technical  
+### Semantic Model Relationships
+![Relationships](https://mwalters-data-storage.atl1.cdn.digitaloceanspaces.com/US_Candy_Distributor/Semantic_Model_Relationships.png)  
+The active relationship between Calendar and FCT_Sales is through the invoice date, making it the default.
+
+### User-Defined Functions (UDF)
+Tested the preview feature for user-defined functions by implementing them with the various date relationships. These are used in both the _Select_Period calculation group and measures that required specific date relationships.  
+
+Example UDF  
+
+    DeliverDate = 
+    (
+        _measure : EXPR
+    ) =>
+    CALCULATE (
+        _measure,
+        USERELATIONSHIP ( FCT_Sales[Arrival Date], 'Calendar'[adjusted_date] )
+    )
+ Semantic Model has the following UDF's:
+ - **Haversine**: given two sets of latitudes and longitudes, calculates the distance along the Earth's surface
+ - **DeliverDate**: uses the relationship from the delivery date to the calendar table
+ - **InvoiceDate**: uses the relationship from the invoice date to the calendar table
+ - **OrderDate**: uses the relationship from the order date to the calendar table
+ - **ShipDate**: uses the relationship from the ship date to the calendar table
+ - **WIP**: calculates value in a specific stage in the order lifecyle
+    - *Production* -> Ordered but not shipped
+    - *Shipping* -> Shipped but not delivered
+    - *Total* -> Ordered but not delivered
+    - *Financial* -> Delivered but not invoiced
+
+### Metrics Table  
+
+The metric table is a disconnected table that allows the user to filter or slice to a measure name and the value in a visual is updated based on the selection.
+
+The metric table is used in conjunction with the KPI_measure. The measure is also dynamically typed, using the stored format string in the table to render the results in the appropriate format.
+
+    KPI Measure = 
+    SWITCH (
+        SELECTEDVALUE ( _Metrics[Metric] ),
+        "REVENUE", InvoiceDate ( [Total Sales] ) + [Revenue Accrued],
+        "Sales", InvoiceDate ( [Total Sales] ),
+        "Rev Accrual", [Revenue Accrued],
+        "COGS", ShipDate ( [Production Costs] ) + DeliverDate ( [Shipping Costs] ),
+        "Production Costs", ShipDate ( [Production Costs] ),
+        "Shipping Costs", DeliverDate ( [Shipping Costs] ),
+        "GROSS PROFIT",
+            InvoiceDate ( [Total Sales] ) + [Revenue Accrued]
+                - ShipDate ( [Production Costs] )
+                - DeliverDate ( [Shipping Costs] ),
+        "Gross Margin", [Gross Margin],
+        "OPEX",
+            [SG&A] + [Marketing Costs] + [Depreciation],
+        "SG&A", [SG&A],
+        "Marketing", [Marketing Costs],
+        "Depreciation", [Depreciation],
+        "OPERATING PROFIT", [EBIT],
+        "EBIT%", [EBIT %]
+    )
+
+## Tools
+| Phase | Tool / Technique |
+|-------|------------------|
+| Data Sourcing | Object Storage (Digital Ocean) |
+| ETL | Power Query / M Code / Custom Functions |
+| Data Modeling | Star Schema, 1"* Relationships |
+| Calculations / Measures | DAX Studio / Power BI Desktop |
+| KPI / Visual Icons | Tabular Editor |
+| Source Control | Visual Studio Code / GitHub |
+| Ad-Hoc Analysis | Excel (live-connected to semantic model)|

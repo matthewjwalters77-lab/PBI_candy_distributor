@@ -371,7 +371,7 @@ table _Measures
 		displayFolder: Product Management
 		lineageTag: ea7d0e28-06f2-4e79-a9e1-8a7a0a4be9dd
 
-	/// Represents concentration of sales for zip codes that have sales.
+	/// Represents concentration of sales for zip codes that have sales and per 100k population.
 	measure 'Sales Density (100k)' =
 			
 			CALCULATE ( DIVIDE ( [Total Sales] * 100000, [Total Population] ), FCT_Sales )
@@ -514,7 +514,7 @@ table _Measures
 	measure 'EBIT %' =
 			
 			DIVIDE ( [EBIT], [Revenue] )
-		formatString: 0.00%;-0.00%;0.00%
+		formatString: 0.0%;-0.0%;0.0%
 		displayFolder: Financial
 		lineageTag: 459c603e-94c3-4eab-99a7-dd6092b81b7e
 
