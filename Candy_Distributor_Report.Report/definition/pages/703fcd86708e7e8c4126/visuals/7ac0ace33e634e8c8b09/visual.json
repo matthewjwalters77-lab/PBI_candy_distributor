@@ -196,7 +196,7 @@
             "webUrl": {
               "expr": {
                 "Literal": {
-                  "Value": "'www.linkedin.com/in/matthew-walters-a66a4322'"
+                  "Value": "'https://www.linkedin.com/in/matthew-walters-a66a4322'"
                 }
               }
             },
