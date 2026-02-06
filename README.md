@@ -3,15 +3,13 @@
 # PBI_candy_distributor
 Repository for the Power BI resources need to ingest, report, and analyze fictitious candy distributor data.
 
-# Reports
+# Report Link
 
-[Candy Financials](https://app.powerbi.com/view?r=eyJrIjoiNGEzNzYyMWQtZjhmYy00ODAwLThlYWItNGJkZTExMTM5OTM5IiwidCI6ImNlMTg3NGVjLWMwMjktNGY3YS1iMDMyLTkwNGJhMDU4YWE2ZCIsImMiOjN9)
+[Candy Report](https://app.powerbi.com/view?r=eyJrIjoiOGYyYzEzOWYtNTdiOS00YzgyLTkwYTEtOTQyMzUxOTk4ZDcxIiwidCI6ImNlMTg3NGVjLWMwMjktNGY3YS1iMDMyLTkwNGJhMDU4YWE2ZCIsImMiOjN9)
 
-[Candy Operations Summary](https://app.powerbi.com/view?r=eyJrIjoiODgzNDIzNTUtYzE0ZC00MzY3LThkNDQtZjRmNmFhYTUzOTk2IiwidCI6ImNlMTg3NGVjLWMwMjktNGY3YS1iMDMyLTkwNGJhMDU4YWE2ZCIsImMiOjN9)
+# iFrame
 
-[Candy Production](https://app.powerbi.com/view?r=eyJrIjoiY2Q5N2IxODYtMmY4Yi00YmNhLWFlNzUtZDk0Njk5NDM4MzViIiwidCI6ImNlMTg3NGVjLWMwMjktNGY3YS1iMDMyLTkwNGJhMDU4YWE2ZCIsImMiOjN9)
+<iframe title="Candy_Distributor_Report" width="600" height="373.5" src="https://app.powerbi.com/view?r=eyJrIjoiOGYyYzEzOWYtNTdiOS00YzgyLTkwYTEtOTQyMzUxOTk4ZDcxIiwidCI6ImNlMTg3NGVjLWMwMjktNGY3YS1iMDMyLTkwNGJhMDU4YWE2ZCIsImMiOjN9" frameborder="0" allowFullScreen="true"></iframe>
 
-[Candy Shipping](https://app.powerbi.com/view?r=eyJrIjoiNDFhZGE2NTEtNWQ2YS00YzYzLTg2ODMtZGJlOTE1NmMzYjdlIiwidCI6ImNlMTg3NGVjLWMwMjktNGY3YS1iMDMyLTkwNGJhMDU4YWE2ZCIsImMiOjN9)
 
-[Candy Product Management](https://app.powerbi.com/view?r=eyJrIjoiZjBmZDk1ZDEtY2MzNy00YjkzLTk4YzgtYmZjOTRjYjMxZmJjIiwidCI6ImNlMTg3NGVjLWMwMjktNGY3YS1iMDMyLTkwNGJhMDU4YWE2ZCIsImMiOjN9)
 

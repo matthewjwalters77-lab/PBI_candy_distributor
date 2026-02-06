@@ -120,7 +120,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'KPI Chg PY '"
+                  "Value": "'Metric Chg PY '"
                 }
               }
             }

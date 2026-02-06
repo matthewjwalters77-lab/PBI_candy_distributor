@@ -371,7 +371,7 @@ table _Measures
 		displayFolder: Product Management
 		lineageTag: ea7d0e28-06f2-4e79-a9e1-8a7a0a4be9dd
 
-	/// Represents concentration of sales for zip codes that have sales.
+	/// Represents concentration of sales for zip codes that have sales and per 100k population.
 	measure 'Sales Density (100k)' =
 			
 			CALCULATE ( DIVIDE ( [Total Sales] * 100000, [Total Population] ), FCT_Sales )
