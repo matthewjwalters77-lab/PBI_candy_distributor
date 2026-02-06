@@ -3,11 +3,13 @@
 # PBI_candy_distributor
 Repository for the Power BI resources need to ingest, report, and analyze fictitious candy distributor data.
 
-# Report Link
+# [Candy Report Link](https://app.powerbi.com/view?r=eyJrIjoiOGYyYzEzOWYtNTdiOS00YzgyLTkwYTEtOTQyMzUxOTk4ZDcxIiwidCI6ImNlMTg3NGVjLWMwMjktNGY3YS1iMDMyLTkwNGJhMDU4YWE2ZCIsImMiOjN9)
 
-[Candy Report](https://app.powerbi.com/view?r=eyJrIjoiOGYyYzEzOWYtNTdiOS00YzgyLTkwYTEtOTQyMzUxOTk4ZDcxIiwidCI6ImNlMTg3NGVjLWMwMjktNGY3YS1iMDMyLTkwNGJhMDU4YWE2ZCIsImMiOjN9)
-
-
+![Financial Summary](FinancialSummary.png)
 
 
+![Financial Metric Selection](metric_selection.gif)
+
+
+![Financial Metric Hover](metric_hover.gif)
 
