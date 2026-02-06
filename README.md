@@ -7,9 +7,7 @@ Repository for the Power BI resources need to ingest, report, and analyze fictit
 
 [Candy Report](https://app.powerbi.com/view?r=eyJrIjoiOGYyYzEzOWYtNTdiOS00YzgyLTkwYTEtOTQyMzUxOTk4ZDcxIiwidCI6ImNlMTg3NGVjLWMwMjktNGY3YS1iMDMyLTkwNGJhMDU4YWE2ZCIsImMiOjN9)
 
-# iFrame
 
-<iframe title="Candy_Distributor_Report" width="600" height="373.5" src="https://app.powerbi.com/view?r=eyJrIjoiOGYyYzEzOWYtNTdiOS00YzgyLTkwYTEtOTQyMzUxOTk4ZDcxIiwidCI6ImNlMTg3NGVjLWMwMjktNGY3YS1iMDMyLTkwNGJhMDU4YWE2ZCIsImMiOjN9" frameborder="0" allowFullScreen="true"></iframe>
 
 
 
