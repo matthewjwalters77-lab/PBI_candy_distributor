@@ -40,7 +40,7 @@ Hover over the KPI to see a monthly breakdown of performance status and trend fo
 
 Hover over the waterfall chart to see a regional breakdown of the metric.  
 
-![breakdown_hover](https://mwalters-data-storage.atl1.cdn.digitaloceanspaces.com/US_Candy_Distributor/breaddown_hover.gif)  
+![Financial Breakdown](https://mwalters-data-storage.atl1.cdn.digitaloceanspaces.com/US_Candy_Distributor/breaddown_hover.gif)  
 
 
 ## Technical  
