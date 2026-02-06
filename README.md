@@ -38,11 +38,6 @@ Hover over the KPI to see a monthly breakdown of performance status and trend fo
 ![Financial Metric Hover](https://mwalters-data-storage.atl1.cdn.digitaloceanspaces.com/US_Candy_Distributor/metric_hover.gif)  
 
 
-Hover over the waterfall chart to see a regional breakdown of the metric.  
-
-![Financial Breakdown](https://mwalters-data-storage.atl1.cdn.digitaloceanspaces.com/US_Candy_Distributor/breaddown_hover.gif)  
-
-
 ## Technical  
 ### Semantic Model Relationships
 ![Relationships](https://mwalters-data-storage.atl1.cdn.digitaloceanspaces.com/US_Candy_Distributor/Semantic_Model_Relationships.png)  
